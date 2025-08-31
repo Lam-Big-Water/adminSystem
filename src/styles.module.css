@@ -1,0 +1,26 @@
+.sliderBar {
+    position: absolute;
+    left: -290px;
+    z-index: 80;
+
+    &:hover {
+        animation: slide 0.7s ease-in-out forwards;
+    }
+
+}
+
+.sliderButton {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    position: absolute;
+    top: calc(50%);
+    right: -39px;
+}
+
+@keyframes slide {
+
+    to {
+        left: 0px;
+    }
+}
