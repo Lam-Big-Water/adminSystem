@@ -18,7 +18,7 @@ const Table = () => {
 
   return (
     <>
-      <div className="sticky z-60 top-0 flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <AddCabin />
         <Filter
           filterField="discount"

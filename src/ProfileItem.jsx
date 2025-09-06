@@ -13,7 +13,7 @@ const ProfileItem = ({children}) => {
         alt={`Avatar of ${fullName}`}
       />
       <div className="">
-        <h2 className="text-[var(--text-primary)] text-sm">{fullName}</h2>
+        <h2 className="text-[var(--text-primary)] font-medium text-sm">{fullName}</h2>
         <small className="text-xs text-[var(--text-second)]">SamLamShowroom@.com</small>
       </div>
       {children}

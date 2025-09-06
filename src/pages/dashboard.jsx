@@ -7,13 +7,14 @@ import {useGetAllCabins} from '../query/cabins/useGet';
 import TodayActivity from '../TodayActivity';
 import DurationChart from '../DurationChart';
 import SalesChart from '../SalesChart';
+import Spinner from '../Spinner';
 
 const dashboard = () => {
   const {bookings, isLoading: isLoading1} = useRecentBookings();
   const {confirmedStays, isLoading: isLoading2, numDays} = useRecentStays();
   const {cabins, isLoading: isLoading3} = useGetAllCabins();
 
-  if (isLoading1 || isLoading2 || isLoading3) return <h1>Loading...</h1>
+  if (isLoading1 || isLoading2 || isLoading3) return <Spinner />
 
 
   const numBookings = bookings.length;

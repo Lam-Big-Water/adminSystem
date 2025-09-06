@@ -4,6 +4,7 @@
     font-family: sans-serif;
 
     &, &.dark-mode {
+      
       --color-border: #2E2E2E;
       --color-block: #171717;
       --color-block-hover: #262626;

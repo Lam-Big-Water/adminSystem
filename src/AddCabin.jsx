@@ -9,8 +9,8 @@ const AddCabin = () => {
 
         <Modal>
         <ModalOpen opens="add">
-          <button className="flex items-center gap-1 bg-[var(--color-block)] text-[.75rem] border-[1.4px] border-[var(--color-border)] rounded-sm text-[var(--text-primary)] py-2 px-4 hover:bg-[var(--color-block-hover)] cursor-pointer">
-            <IoMdAdd className="text-[1.125rem]"/>
+          <button className="flex items-center gap-1 bg-[var(--color-block)] text-sm font-bold border-[1.4px] border-[var(--color-border)] rounded-sm text-[var(--text-primary)] py-2 px-4 hover:bg-[var(--color-block-hover)] cursor-pointer">
+            <IoMdAdd className="text-lg"/>
             Add New Data
           </button>
         </ModalOpen>

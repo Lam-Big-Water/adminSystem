@@ -8,7 +8,7 @@ import { Menus, Toggle, List, Button } from "./compose/Menus";
 
 
 import { FaRegImage } from "react-icons/fa";
-import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
+import { HiOutlinePencilSquare, HiOutlineSquare2Stack, HiOutlineTrash } from "react-icons/hi2";
 
 import { formatDate } from "./utils/formatDate";
 
@@ -65,16 +65,16 @@ const Row = ({ cabin, i }) => {
 
                 {/* ModalOpen 触发器仍然在列表里 */}
                 <ModalOpen opens="pagePrint">
-                  <Button icon={<HiSquare2Stack />}>Print</Button>
+                  <Button icon={<HiOutlineSquare2Stack className="text-lg" />}>Print</Button>
                 </ModalOpen>
 
           
                 <ModalOpen opens="update">
-                  <Button icon={<HiPencil />}>Edit</Button>
+                  <Button icon={<HiOutlinePencilSquare className="text-lg" />}>Edit</Button>
                 </ModalOpen>
 
                 <ModalOpen opens="delete">
-                  <Button icon={<HiTrash />}>Delete</Button>
+                  <Button icon={<HiOutlineTrash className="text-lg" />}>Delete</Button>
                 </ModalOpen>
               </List>
 
