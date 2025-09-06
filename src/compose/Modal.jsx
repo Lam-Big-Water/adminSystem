@@ -1,6 +1,5 @@
 import { cloneElement, createContext, useContext, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { HiXMark } from "react-icons/hi2";
 
 import FocusLock from 'react-focus-lock';
 
@@ -39,14 +38,14 @@ export const ModalWindow = ({ children, name }) => {
     <FocusLock>
     <div  className="fixed top-0 left-0 w-full h-screen transition-colors backdrop-blur-sm z-100">
       <div
-        className="max-h-[90vh] w-[60%] max-w-[800px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] transition-all bg-[var(--color-block)] text-sm font-medium text-[var(--text-primary)] p-6 border-[1.4px] border-[var(--color-border)] rounded-2xl overflow-y-scroll"
+        className="w-full max-w-[720px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] transition-all bg-[var(--color-block)] text-sm font-medium text-[var(--text-primary)] p-6 border-[1.4px] border-[var(--color-border)] rounded-2xl overflow-y-scroll"
         ref={ref}
       >
 
-        <div className="py-10">{cloneElement(children, { onCloseModal: close })}</div>
+        <div className="py-4">{cloneElement(children, { onCloseModal: close })}</div>
       </div>
     </div>
      </FocusLock>,
-    document.querySelector("#actionList")
+    document.querySelector("body")
   );
 };

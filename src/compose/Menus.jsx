@@ -59,7 +59,7 @@ export const List = ({id, children}) => {
   return createPortal (
     <FocusLock>
     <ul
-    className='p-1 bg-[var(--color-bg)] border-[1px] border-[var(--color-border)] fixed z-100 rounded-xl'
+    className='p-1 bg-[var(--color-block-hover)] border-[1px] border-[var(--color-border)] fixed z-100 rounded-md'
     ref={ref}
     style={{
       right: position?.x,
@@ -69,7 +69,7 @@ export const List = ({id, children}) => {
       {children}
     </ul>
     </FocusLock>,
-    document.querySelector("#actionList")
+    document.querySelector("body")
     )
 }
 
@@ -82,10 +82,10 @@ export const Button = ({children, icon, onClick}) => {
   }
 
   return (
-    <li className='overflow-hidden text-base text-[var(--text-primary)] font-medium hover:bg-[var(--color-block-hover)] rounded-sm transition-colors'>
-      <button className='w-full h-full flex justify-start items-center gap-4 cursor-pointer py-2 p-4' onClick={handleClick}>
-        <span className='text-lg'>{icon}</span>
-        <span>{children}</span>
+    <li className='overflow-hidden text-sm text-[var(--text-primary)] font-normal hover:bg-[var(--color-block-hover)] rounded-sm transition-colors'>
+      <button className='w-full h-full flex justify-start items-center cursor-pointer p-2 gap-2 hover:bg-[var(--hover-highlight)]' onClick={handleClick}>
+        <span className='text-base'>{icon}</span>
+        <span className=''>{children}</span>
       </button>
     </li>
   )

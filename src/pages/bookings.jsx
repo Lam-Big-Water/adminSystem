@@ -8,11 +8,11 @@ const bookings = () => {
   const { count } = useBookings();
 
   return (
-    <>
+    <div className="">
       <BookingTableOperations />
       <BookingTable />
       <Pagination count={count}/>
-    </>
+    </div>
   )
 }
 

@@ -20,7 +20,7 @@ const FormField = ({
     <div className={className}>
       <label 
       htmlFor={id}
-      className={`mb-2 block text-sm font-medium ${isError ? "text-red-400" : "text-white"}`}
+      className={`mb-2 block text-base font-normal ${isError ? "text-red-400" : "text-[var(--color-primary)]"}`}
       >
       {label}
       {isError && (
@@ -34,7 +34,7 @@ const FormField = ({
           autoComplete={autoComplete}
           {...register(id, validationRules)}
           defaultValue={defaultValue}
-          className={`w-full bg-[var(--hoverBackground)] rounded-sm border-[1.4px] border-[var(--border)] focus:outline-1 focus:outline-gray-300 p-2 text-white ${
+          className={`w-full min-h-26 bg-[var(--filed-bg)] rounded-sm border-[1.8px] border-[var(--color-border)] p-2 text-[var(--color-primary)] ${
             props.readOnly ? "bg-gray-700" : ""
           }`}
           {...props}
@@ -46,7 +46,7 @@ const FormField = ({
           autoComplete={autoComplete}
           {...register(id, validationRules)}
           defaultValue={defaultValue}
-          className={`relative w-full bg-[var(--hoverBackground)] rounded-sm border-[1.4px] border-[var(--border)] focus:outline-1 focus:outline-gray-300 p-2 text-white ${
+          className={`relative w-full bg-[var(--filed-bg)] rounded-sm border-[1.8px] border-[var(--color-border)] p-2 text-[var(--color-primary)] ${
             props.readOnly ? "bg-gray-700" : ""
           }`}
           {...props}

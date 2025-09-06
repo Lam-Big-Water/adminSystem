@@ -26,8 +26,8 @@ const BookingTable = () => {
 
   if (!bookings.length) return <h1>Empty...</h1>;
   return (
-    <div className="row-start-2 row-end-3 col-start-2 col-end-3 flex-1 border-[1px] border-[var(--color-border)] rounded-xl overflow-hidden">
-      <table className="table w-full text-left text-sm font-normal text-[var(--text-primary)] border-collapse border-spacing-0 table-layout-fixed">
+    <div className="mt-6 overflow-x-auto border-[1px] border-[var(--color-border)] rounded-xl overflow-hidden">
+      <table className="table whitespace-nowrap w-full text-left text-sm font-normal text-[var(--text-primary)] border-collapse border-spacing-0 table-layout-fixed">
         <thead className="bg-[var(--color-block)]">
           <tr className="">
             <th className="px-6 py-3 "></th>

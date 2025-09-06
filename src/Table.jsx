@@ -18,7 +18,7 @@ const Table = () => {
 
   return (
     <>
-      <div className="row-span-1 sticky z-60 top-[14px] flex justify-between items-center">
+      <div className="sticky z-60 top-0 flex justify-between items-center">
         <AddCabin />
         <Filter
           filterField="discount"
@@ -29,9 +29,9 @@ const Table = () => {
           ]}
         />
       </div>
-      <div className="col-start-2 min-h-full flex-1 overflow-x-hidden">
-        <div className="overflow-auto w-full rounded-2xl border-[1.4px] border-[var(--color-border)]">
-          <table className="w-full text-left text-sm font-normal text-[var(--text-primary)] border-collapse border-spacing-0">
+      <div className="min-h-full mt-6 overflow-x-hidden">
+        <div className="overflow-y-auto w-full rounded-2xl border-[1.4px] border-[var(--color-border)]">
+          <table className="w-full whitespace-nowrap text-left text-sm font-normal text-[var(--text-primary)] border-collapse border-spacing-0">
             <thead className="bg-[var(--color-block)]">
               <tr>
                 <th

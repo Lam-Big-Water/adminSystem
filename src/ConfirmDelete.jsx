@@ -18,10 +18,10 @@ const ConfirmDelete = ({ resourceName, onCloseModal, id, deleteUrl, onConfirm })
   return (
     <div>
       
-      <h1 className="text-2xl text-[var(--white)] font-medium">
+      <h1 className="text-2xl text-[var(--text-primary)] font-medium">
         Delete {resourceName}
       </h1>
-      <p className="text-base text-gray-400 py-4 w-[85%]">
+      <p className="text-xs text-[var(--text-second)] py-4 w-[85%]">
         Are you sure you want to delete this cabins permanently? This action
         cannot be undone.
       </p>
@@ -29,14 +29,14 @@ const ConfirmDelete = ({ resourceName, onCloseModal, id, deleteUrl, onConfirm })
         <button
         tabindex="0"
           onClick={() => onCloseModal?.()}
-          className="px-4 py-2 border border-gray-50 rounded-sm bg-[var(--black)] text-sm text-[var(--white)] cursor-pointer hover:bg-gray-500/20 "
+          className="px-4 py-2 border-[1.4px] border-[var(--color-border)] rounded-sm bg-[var(--color-second)] text-sm text-[var(--color-primary)] cursor-pointer hover:bg-[var(--second-button-hover)]"
         >
           Cancel
         </button>
         <button
           disabled={isDeleting}
           onClick={onConfirm}
-          className={`px-4 py-2 border border-gray-50 rounded-sm bg-[var(--white)] text-sm text-[var(--black)] hover:bg-white/90 ${isDeleting ? "cursor-not-allowed" : "cursor-pointer"}`}
+          className={`px-4 py-2 border-[1.4px] border-[var(--color-border)] rounded-sm bg-[var(--color-primary)] text-sm text-[var(--color-second)] hover:bg-[var(--primary-button-hover)] ${isDeleting ? "cursor-not-allowed" : "cursor-pointer"}`}
         >
           Delete
         </button>

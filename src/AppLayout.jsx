@@ -5,12 +5,13 @@ import Sidebar from "./Sidebar";
 
 const AppLayout = () => {
   return (
-    <div className="max-w-7xl m-auto p-6 font-bold">
-      <div id="actionList"></div>
+    <div className="w-full h-full flex justify-center items-center p-6">
 
-      <div className="grid grid-cols-[300px_1fr] grid-rows-[60px_1fr_60px] items-start gap-6 max-md:grid-cols-1">
+      <div className="flex gap-6 w-full max-w-[1200px] h-full max-h-[900px] border border-[var(--color-border)] rounded-2xl">
         <Sidebar />
+        <div className="w-full overflow-y-auto p-6">
         <Outlet />
+        </div>
       </div>
     </div>
   );

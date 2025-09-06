@@ -7,26 +7,26 @@ const PrintPreview = ({ data, onCloseModal }) => {
     window.print();
   }
   return (
-      <div className="">
-        <div className="">
+      <div className='text-[var(--color-primary)]'>
+        <div className="flex justify-between">
           <h2 className="text-xl font-bold">Preview</h2>
           <div className="flex gap-2">
             <button 
               onClick={handlePrint}
-              className="bg-white text-black px-6 py-2 outline-0 focus:outline-2 focus:outline-blue-500 hover:bg-white/90 rounded-sm cursor-pointer"
+              className="px-4 py-2 border-[1.4px] border-[var(--color-border)] rounded-sm bg-[var(--color-primary)] text-sm text-[var(--color-second)] cursor-pointer hover:bg-[var(--second-button-hover)]"
             >
               Print
             </button>
             <button 
               onClick={() => onCloseModal?.()}
-              className="px-6 py-2 border-[1.4px] border-[var(--border)] focus:outline-2 focus:outline-blue-500 cursor-pointer hover:bg-gray-500/20 rounded-sm"
+              className="p-2 border-2 text-[var(--color-primary)] bg-[var(--color-second)] border-[var(--color-border)] rounded-sm"
             >
               Cancel
             </button>
           </div>
         </div>
         
-        <div id="print-content" className="p-6 ">
+        <div id="print-content" className="">
           <div className="border-b-2 border-black pb-4 mb-6">
             <h1 className="text-3xl font-bold">{data.name}</h1>
             <p className="text-[var(--text-gray)]">Date: {new Date().toLocaleDateString()}</p>

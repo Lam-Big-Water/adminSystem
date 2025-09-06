@@ -4,7 +4,7 @@ import SortBy from "./SortBy";
 
 const BookingTableOperations = () => {
   return (
-    <div className='row-span-1 flex gap-4'>
+    <div className='sticky top-0 z-60 flex justify-between gap-4'>
       <Filter 
       filterField="status"
       options={[

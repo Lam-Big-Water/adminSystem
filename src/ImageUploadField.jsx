@@ -17,10 +17,10 @@ const ImageUploadField = ({
     const isError = !!errorMessage;
 
   return (
-    <div>
+    <div className='text-[var(--text-primary)]'>
         {isEditSession ? (
             <div className='relative'>
-                <label htmlFor="current photo" className='mb-2 block text-sm font-medium'>
+                <label htmlFor="current photo" className='text-[var(--text-primary)] mb-2 block text-sm font-medium'>
                     Current photo
                 </label>
                 <img className='w-full max-w-[300px] max-h-[300px] object-fill rounded-sm' src={previewImage || currentImage} alt="" />
@@ -28,7 +28,7 @@ const ImageUploadField = ({
                 <div>
                     <label 
                     htmlFor={id}
-                    className='p-2 text-black bg-white absolute top-2 right-1 block text-sm font-medium cursor-pointer focus:ring-2 focus:ring-blue-500 focus:outline-none rounded-sm'
+                    className='p-2 text-[var(--text-primary)] bg-[var(--color-block)] absolute top-2 right-1 block text-sm font-medium cursor-pointer rounded-sm'
                     tabIndex={0}
                     onKeyDown={(e) => {
                         if (e.key === " " || e.key === "Enter") {
@@ -57,7 +57,7 @@ const ImageUploadField = ({
             <>
                 <label
                     htmlFor={id}
-                    className={`mb-2 block text-sm font-medium ${isError ? "text-red-400 " : "text-white"}`}
+                    className={`mb-2 block text-sm font-medium ${isError ? "text-red-400 " : "text-[var(--text-primary)]"}`}
                 >
                     {label}
                     {isError && (
@@ -72,7 +72,7 @@ const ImageUploadField = ({
                 type="file"
                 accept='image/*'
                 id={id}
-                className='relative w-full bg-[var(--hoverBackground)] rounded-sm border-[1.4px] border-[var(--border)] focus:outline-1 focus:outline-gray-300 p-2 text-white'
+                className='relative w-full bg-[var(--color-block)] rounded-sm border-[1.8px] border-[var(--color-border)] text-[var(--text-primary)] p-2 cursor-pointer hover:bg-[var(--filed-bg)]'
                 />
             </>
         )}

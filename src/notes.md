@@ -144,3 +144,7 @@ flowchart TD
     J --> K[卸载组件]
 
 ```
+
+```
+react query v5 {isLoading} status and flag have been renamed to {isPending}
+```
