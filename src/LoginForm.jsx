@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useLogin} from './query/auth/useLogin'
+import SpinnerMini from './SpinnerMini'
 
 const LoginForm = () => {
   const [email, setEmail] = useState("samlam@showcase.com");
@@ -44,7 +45,7 @@ const LoginForm = () => {
         </div>
 
         <div className="flex flex-col gap-4 pt-4 pb-2">
-          <button className="text-xl font-bold cursor-pointer text-[var(--color-second)] bg-[var(--color-primary)] border-[2px] border-[var(--color-border)] px-4 py-3 rounded-md">{isPending ? "Wait..." : "Login"}</button>
+          <button className="flex justify-center items-center text-xl font-bold cursor-pointer text-[var(--color-second)] bg-[var(--color-primary)] border-[2px] border-[var(--color-border)] px-4 py-3 rounded-md">{isPending ? <SpinnerMini /> : "Login"}</button>
         </div>
       </form>
     </div>
