@@ -21,7 +21,7 @@ const SortBy = ({options}) => {
 
 const Select = ({options, value, onChange}) => {
     return (
-        <select value={value} className='text-[var(--text-primary)] p-1 bg-[var(--color-block)] border-2 border-[var(--color-border)] rounded-lg' onChange={onChange}>
+        <select value={value} className='max-w-32 text-[var(--text-primary)] p-1 bg-[var(--color-block)] border-2 border-[var(--color-border)] rounded-lg' onChange={onChange}>
             {options.map((option) => (
                 <option key={option.value} value={option.value}>
                     {option.label}
@@ -30,4 +30,7 @@ const Select = ({options, value, onChange}) => {
         </select>
     )
 }
+
+
+
 export default SortBy

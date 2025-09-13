@@ -6,7 +6,6 @@ import Toast from "./Toast";
 
 const ToastShelf = () => {
     const {toasts} = React.useContext(ToastContext);
-    console.log(toasts)
 
   return createPortal (
     <ol className='fixed right-0 bottom-0 flex flex-col gap-4 p-4'>
