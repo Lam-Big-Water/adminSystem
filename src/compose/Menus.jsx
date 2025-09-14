@@ -48,8 +48,8 @@ export const Toggle = ({
   return (
     <button className={styles} onClick={handleClick}>
       <div className="flex gap-2 justify-center items-center">
-        {text && <span>{text}</span>}
         {icon && <span>{icon}</span>}
+        {text && <span>{text}</span>}
       </div>
     </button>
   );
@@ -64,7 +64,7 @@ export const List = ({ id, children }) => {
   return createPortal(
     <FocusLock>
       <ul
-        className="flex flex-col justify-start items-start p-1 bg-[var(--color-bg)] border-[1px] border-[var(--color-border)] fixed z-100 rounded-md"
+        className="flex flex-col justify-start items-start gap-1 p-1 bg-[var(--color-bg)] border-[1px] border-[var(--color-border)] fixed z-100 rounded-md"
         ref={ref}
         style={{
           right: position?.x,

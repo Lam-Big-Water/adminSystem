@@ -8,7 +8,7 @@ export function useBookings() {
     const [searchParams] = useSearchParams();
   
     // FILTER
-    const filterValue = searchParams.get("status");
+    const filterValue = searchParams.get("Status");
     const filter =
       !filterValue || filterValue === "all"
         ? null
@@ -16,7 +16,7 @@ export function useBookings() {
     // { field: "totalPrice", value: 5000, method: "gte" };
   
     // SORT
-    const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
+    const sortByRaw = searchParams.get("SortBy") || "startDate-desc";
     const [field, direction] = sortByRaw.split("-");
     const sortBy = { field, direction };
   

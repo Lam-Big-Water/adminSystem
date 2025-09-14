@@ -26,6 +26,9 @@ const Sidebar = () => {
   const [barToggle, setBarToggle] = React.useState(false);
   const { isLoading, logout } = useLogout();
   const { isDarkMode, toggleDarkMode } = useDarkMode();
+  function handleClose () {
+
+  }
   return (
     <>
       <div className={`flex flex-col w-full max-w-[300px] h-full p-4 text-[var(--color-primary)] border-r border-[var(--color-border)] max-lg:hidden`}>
@@ -74,7 +77,7 @@ const Sidebar = () => {
         <Modal>
           <Menus>
             <ProfileItem>
-              <Toggle styles="flex justify-center w-6 w-h hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-122} positionX={240} />
+              <Toggle styles="flex justify-center w-6 w-h hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-164} positionX={260} />
 
               <List>
                 <ProfileItem />
@@ -116,47 +119,52 @@ const Sidebar = () => {
 
         </div>
         <ul className={`flex flex-col gap-2`}>
-          <Link
-            to="/dashboard"
-            className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
-          >
-            <HiOutlineHome className="font-medium text-lg"/>
-            <span>Home</span>
-          </Link>
-          <Link
-            to="/bookings"
-            className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
-          >
-            <HiOutlineBookmark className="font-medium text-lg"/>
-            <span>Bookings</span>
-          </Link>
-          <Link
-            to="/cabins"
-            className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
-          >
-            <HiCubeTransparent className="font-medium text-lg"/>
-            <span>Cabins</span>
-          </Link>
-          <Link
-            to="/user"
-            className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
-          >
-            <HiOutlineUsers className="font-medium text-lg"/>
-            <span>User</span>
-          </Link>
-          <Link
-            to="setting"
-            className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
-          >
-            <HiOutlineCog8Tooth className="font-medium text-lg"/>
-            <span>Setting</span>
-          </Link>
+        <Link
+    to="/dashboard"
+    className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
+    onClick={() => setBarToggle(false)} // Added here
+  >
+    <HiOutlineHome className="font-medium text-lg" />
+    <span>Home</span>
+  </Link>
+  <Link
+    to="/bookings"
+    className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
+    onClick={() => setBarToggle(false)} // Added here
+  >
+    <HiOutlineBookmark className="font-medium text-lg" />
+    <span>Bookings</span>
+  </Link>
+  <Link
+    to="/cabins"
+    className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
+    onClick={() => setBarToggle(false)} // Added here
+  >
+    <HiCubeTransparent className="font-medium text-lg" />
+    <span>Cabins</span>
+  </Link>
+  <Link
+    to="/user"
+    className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
+    onClick={() => setBarToggle(false)} // Added here
+  >
+    <HiOutlineUsers className="font-medium text-lg" />
+    <span>User</span>
+  </Link>
+  <Link
+    to="setting"
+    className="flex font-medium text-base items-center gap-2 hover:bg-[var(--color-block-hover)] p-2 rounded-sm cursor-pointer"
+    onClick={() => setBarToggle(false)} // Added here
+  >
+    <HiOutlineCog8Tooth className="font-medium text-lg" />
+    <span>Setting</span>
+  </Link>
         </ul>
         <div className={`mt-auto`}>
         <Modal>
           <Menus>
             <ProfileItem>
-              <Toggle styles="flex justify-center w-6 w-h hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-122} positionX={240} />
+              <Toggle styles="flex justify-center w-6 w-h hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-164} positionX={260} />
 
               <List>
                 <ProfileItem />
@@ -190,7 +198,7 @@ const Sidebar = () => {
           </Menus>
         </Modal>
         </div>
-          <button className={`text-2xl text-amber-50 absolute cursor-pointer ${barToggle ? "top-4 right-4" : "top-1/2 -right-4"}`} onClick={() => setBarToggle(!barToggle)}>
+          <button className={`text-2xl text-[var(--text-primary)] absolute cursor-pointer ${barToggle ? "top-4 right-4" : "top-1/2 -right-4"}`} onClick={() => setBarToggle(!barToggle)}>
             <span className="bg-[var(--color-bg)]">⍃</span>
           </button>
       </div>

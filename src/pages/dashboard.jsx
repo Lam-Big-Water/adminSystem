@@ -25,7 +25,6 @@ const dashboard = () => {
   return (
     <div className='text-[var(--text-primary)]'>
       <div className='flex justify-between'>
-        <h1>Dashboard</h1>
         <Filter 
         filterField="last"
         options={[
