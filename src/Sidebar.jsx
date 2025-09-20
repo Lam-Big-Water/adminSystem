@@ -77,7 +77,7 @@ const Sidebar = () => {
         <Modal>
           <Menus>
             <ProfileItem>
-              <Toggle styles="flex justify-center w-6 w-h hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-164} positionX={260} />
+            <Toggle styles="flex justify-center w-7 p-1 hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-164} positionX={260} />
 
               <List>
                 <ProfileItem />
@@ -164,7 +164,7 @@ const Sidebar = () => {
         <Modal>
           <Menus>
             <ProfileItem>
-              <Toggle styles="flex justify-center w-6 w-h hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-164} positionX={260} />
+              <Toggle styles="flex justify-center w-7 p-1 hover:bg-[var(--color-block)] cursor-pointer rounded-sm" icon={<HiEllipsisVertical className="text-[1.3rem]"/>} className="text-xl" positionY={-164} positionX={260} />
 
               <List>
                 <ProfileItem />

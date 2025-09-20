@@ -48,8 +48,8 @@ export const Toggle = ({
   return (
     <button className={styles} onClick={handleClick}>
       <div className="flex gap-2 justify-center items-center">
-        {icon && <span>{icon}</span>}
-        {text && <span>{text}</span>}
+        {icon && <span className="text-sm">{icon}</span>}
+        {text && <span className="text-sm">{text}</span>}
       </div>
     </button>
   );
@@ -63,16 +63,18 @@ export const List = ({ id, children }) => {
 
   return createPortal(
     <FocusLock>
-      <ul
-        className="flex flex-col justify-start items-start gap-1 p-1 bg-[var(--color-bg)] border-[1px] border-[var(--color-border)] fixed z-100 rounded-md"
-        ref={ref}
-        style={{
-          right: position?.x,
-          top: position?.y,
-        }}
-      >
-        {children}
-      </ul>
+      <div className="w-full h-full fixed inset-0 z-130">
+        <ul
+          className="select-none flex flex-col justify-start items-start gap-1 p-1 bg-[var(--color-bg)] border-[1px] border-[var(--color-border)] fixed z-120 rounded-md"
+          ref={ref}
+          style={{
+            right: position?.x,
+            top: position?.y,
+          }}
+        >
+          {children}
+        </ul>
+      </div>
     </FocusLock>,
     document.querySelector("body")
   );
@@ -89,7 +91,7 @@ export const Button = ({ styles, children, icon, onClick }) => {
   return (
     <li className="w-full overflow-hidden text-sm text-[var(--text-primary)] font-normal rounded-lg transition-colors">
       <button
-        className={`w-full h-full flex justify-start items-center cursor-pointer p-2 gap-2 hover:bg-[var(--hover-highlight)] ${styles}`}
+        className={`w-full h-full flex justify-start items-center cursor-pointer p-2 pr-8 gap-2 hover:bg-[var(--hover-highlight)] ${styles}`}
         onClick={handleClick}
       >
         {icon && <span className="text-base">{icon}</span>}

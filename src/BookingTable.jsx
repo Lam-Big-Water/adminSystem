@@ -15,6 +15,7 @@ import {
   HiOutlineEye,
   HiOutlineCheckCircle,
   HiOutlineTrash,
+  HiEllipsisVertical
 } from "react-icons/hi2";
 
 import ConfirmDelete from "./ConfirmDelete";
@@ -95,8 +96,10 @@ const BookingRow = ({
       <td className="px-6 py-4">
         <Modal>
           <Menus>
-            <div className="flex items-center gap-2 p-2 rounded-md cursor-pointer">
+            <div className="">
               <Toggle
+              styles="flex justify-center w-6 hover:bg-[var(--color-block)] cursor-pointer rounded-sm"
+                icon={<HiEllipsisVertical className="text-[1.3rem]"/>}
                 className="text-xl ml-auto"
                 id={"order"}
                 positionY={10}

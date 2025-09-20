@@ -130,16 +130,16 @@ const DurationChart = ({confirmedStays}) => {
   const data = prepareData(startData, confirmedStays);
 
   return (
-    <div className='col-span-2 p-4 bg-[var(--color-block)]'>
-      <h1>Stay duration summary</h1>
+    <div className='col-span-2 p-4 bg-[var(--color-block)] max-lg:col-span-3'>
+      <h1 className='text-lg font-black'>Stay duration summary</h1>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie
             data={data}
             nameKey="duration"
             dataKey="value"
-            innerRadius={85}
-            outerRadius={110}
+            innerRadius={45}
+            outerRadius={80}
             cx="40%"
             cy="50%"
             paddingAngle={3}
@@ -156,9 +156,9 @@ const DurationChart = ({confirmedStays}) => {
           <Legend
             verticalAlign="middle"
             align="right"
-            width="30%"
+            width="40%"
             layout="vertical"
-            iconSize={15}
+            iconSize={12}
             iconType="circle"
           />
         </PieChart>

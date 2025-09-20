@@ -8,7 +8,7 @@ import { Menus, Toggle, List, Button } from "./compose/Menus";
 
 
 import { FaRegImage } from "react-icons/fa";
-import { HiOutlinePencilSquare, HiOutlineSquare2Stack, HiOutlineTrash } from "react-icons/hi2";
+import { HiOutlinePencilSquare, HiOutlineSquare2Stack, HiOutlineTrash, HiEllipsisVertical } from "react-icons/hi2";
 
 import { formatDate } from "./utils/formatDate";
 
@@ -59,7 +59,8 @@ const Row = ({ cabin, i }) => {
 
             <Menus>
 
-              <Toggle id={cabinId} />
+              <Toggle id={cabinId} styles="flex justify-center w-7 p-1 hover:bg-[var(--color-block)] cursor-pointer rounded-sm"
+                icon={<HiEllipsisVertical className="text-[1.3rem]"/>} />
 
               <List id={cabinId}>
 

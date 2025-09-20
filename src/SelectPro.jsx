@@ -20,6 +20,7 @@ const SelectPro = ({filterField, options, icon}) => {
     return (
         <Modal>
         <Menus>
+            
             <Toggle text={filterField} styles="w-fit text-[var(--text-primary)] bg-[var(--filed-bg)] border-[1.6px] border-[var(--color-border)] rounded-md block cursor-pointer p-2" icon={icon} />
             <List>
                 {options.map((option) => (
