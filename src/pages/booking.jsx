@@ -9,8 +9,9 @@ import StatusBadge from "../StatusBadge";
 import { Modal, ModalOpen, ModalWindow } from "../compose/Modal";
 import ConfirmDelete from "../ConfirmDelete"
 import {useDeleteBooking} from "../query/bookings/useDeleteBooking"
+import Spinner from "../Spinner";
 const booking = () => {
-  const { booking, isLoading } = useBooking();
+  const { booking, isPending } = useBooking();
   const { deleteBooking, isDeleting } = useDeleteBooking();
 
 
@@ -18,7 +19,7 @@ const booking = () => {
   const moveBack = useMoveBack();
   const navigate = useNavigate();
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isPending) return <Spinner />;
   if (!booking) return <h1>Empty...</h1>;
 
   const {

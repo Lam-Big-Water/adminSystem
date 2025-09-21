@@ -38,7 +38,7 @@ export const ModalWindow = ({ children, name }) => {
     <FocusLock>
     <div  className="fixed top-0 left-0 w-full h-screen transition-colors backdrop-blur-sm z-100">
       <div
-        className="w-full max-w-[720px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] transition-all bg-[var(--color-block)] text-sm font-medium text-[var(--text-primary)] p-6 border-[1.4px] border-[var(--color-border)] rounded-2xl overflow-y-scroll"
+        className="w-full max-w-[450px] max-h-[600px] h-[80%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] transition-all bg-[var(--color-block)] text-sm font-medium text-[var(--text-primary)] p-6 border-[1.4px] border-[var(--color-border)] rounded-2xl overflow-y-scroll"
         ref={ref}
       >
 

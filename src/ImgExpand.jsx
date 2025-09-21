@@ -65,7 +65,7 @@ const ImgExpand = ({created_at, onCloseModal, fileName, image}) => {
             <IoMdClose aria-hidden="true"/>
           </button>
             <img 
-              className='w-full border-[1.4px] border-[var(--border)]' 
+              className='w-[400px] h-[200px] object-cover border-[1.4px] border-[var(--border)]' 
               src={image} 
               alt={`Preview of ${fileName}`} 
             />

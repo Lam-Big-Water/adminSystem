@@ -47,7 +47,7 @@ const SalesChart = ({ bookings, numDays }) => {
           background: "#fff",
         };
   return (
-    <div className='col-span-4 p-4 bg-[var(--color-block)] max-lg:col-span-3'>
+    <div className='border border-[var(--color-border)] rounded-lg col-span-4 p-4 bg-[var(--color-block)] max-lg:col-span-3'>
         <h1 className='text-lg font-black pb-4'>
         Sales from {format(allDates.at(0), "MMM dd yyyy")} &mdash;{" "}
         {format(allDates.at(-1), "MMM dd yyyy")}{" "}

@@ -130,7 +130,7 @@ const DurationChart = ({confirmedStays}) => {
   const data = prepareData(startData, confirmedStays);
 
   return (
-    <div className='col-span-2 p-4 bg-[var(--color-block)] max-lg:col-span-3'>
+    <div className='border border-[var(--color-border)] rounded-lg col-span-2 p-4 bg-[var(--color-block)] max-lg:col-span-3'>
       <h1 className='text-lg font-black'>Stay duration summary</h1>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>

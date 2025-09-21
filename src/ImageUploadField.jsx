@@ -23,7 +23,7 @@ const ImageUploadField = ({
                 <label htmlFor="current photo" className='text-[var(--text-primary)] mb-2 block text-sm font-medium'>
                     Current photo
                 </label>
-                <img className='w-full max-w-[300px] max-h-[300px] object-fill rounded-sm' src={previewImage || currentImage} alt="" />
+                <img className='w-full max-w-[400px] max-h-[200px] object-cover rounded-sm' src={previewImage || currentImage} alt="" />
 
                 <div>
                     <label 
