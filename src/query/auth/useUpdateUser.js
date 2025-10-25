@@ -4,7 +4,7 @@ import { updateCurrentUser } from "../../server/auth";
 export function useUpdateUser() {
   const queryClient = useQueryClient();
 
-  const { mutate: updateUser, isLoading: isUpdating } = useMutation({
+  const { mutate: updateUser, isPending: isUpdating } = useMutation({
     mutationFn: updateCurrentUser,
     onSuccess: ({ user }) => {
       console.log("User account successfully updated");

@@ -48,12 +48,12 @@ Accepts a unique queryKey and an asynchronous queryFn for fetching data.
 import { useQuery } from "@tanstack/react-query";
 
 function UserProfile() {
-  const { data, isLoading, error } = useQuery({
+  const { data, isPending, error } = useQuery({
     queryKey: ["user"], // Unique key to identify the query
     queryFn: () => fetch("/api/user").then(res => res.json()) // Asynchronous data fetching, Smart Caching: Returns cached data if available, otherwise executes queryFn
   });
 
-  if (isLoading) return "Loading...";
+  if (isPending) return "Loading...";
   if (error) return "Error!";
 
   return <div>{data.name}</div>;

@@ -4,7 +4,7 @@ import { updateSetting as updateSettingApi } from "../../server/apiSettings";
 export function useUpdateSetting() {
   const queryClient = useQueryClient();
 
-  const { mutate: updateSetting, isLoading: isUpdating } = useMutation({
+  const { mutate: updateSetting, isPending: isUpdating } = useMutation({
     mutationFn: updateSettingApi,
     onSuccess: () => {
       console.log("Setting successfully edited");

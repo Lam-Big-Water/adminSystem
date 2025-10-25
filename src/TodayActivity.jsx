@@ -60,14 +60,14 @@ const testData = [
 ];
 
 const TodayActivity = () => {
-  const { activities, isLoading } = useTodayActivity();
+  const { isPending } = useTodayActivity();
 
   return (
     <div className="flex flex-col col-span-2 p-4 bg-[var(--color-block)] border border-[var(--color-border)] rounded-lg max-lg:col-span-3">
       <h1 className="text-lg font-black">Recent Sales</h1>
       <span className="pb-4 text-xs text-[var(--text-second)] font-medium">You made 265 sales this month.</span>
       <div className="flex flex-col gap-4">
-      {!isLoading ? (
+      {!isPending ? (
         testData?.length > 0 ? (
           <>
             {testData.map((activity) => (
@@ -86,7 +86,7 @@ const TodayActivity = () => {
 };
 
 const TodayItem = ({ activity }) => {
-  const { id, status, guests, numNights } = activity;
+  const { status, guests, numNights } = activity;
   const initials = guests.fullName
   .split(' ')
   .map(word => word.charAt(0))

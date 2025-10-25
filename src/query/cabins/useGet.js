@@ -6,7 +6,7 @@ import { PAGE_SIZE } from "../../utils/constants";
 export function useGetAllCabins() {
   
   const {
-    isLoading,
+    isPending,
     data: cabins,
     error,
   } = useQuery({
@@ -14,7 +14,7 @@ export function useGetAllCabins() {
     queryFn: getAll,
   });
 
-  return { isLoading, error, cabins };
+  return { isPending, error, cabins };
 }
 
 
@@ -32,7 +32,7 @@ export function useGetCabinsByOpt() {
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
   const {
-    isLoading,
+    isPending,
     data: { data, count } = {},
     error,
   } = useQuery({
@@ -56,5 +56,5 @@ export function useGetCabinsByOpt() {
     })
   }
 
-  return { isLoading, error, data, count };
+  return { isPending, error, data, count };
 }

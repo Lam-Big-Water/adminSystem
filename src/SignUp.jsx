@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSignUp } from "./query/auth/useSignUp";
 
 const SignUp = () => {
-  const { signUp, isLoading } = useSignUp();
+  const { signUp, isPending } = useSignUp();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
@@ -38,7 +38,7 @@ const SignUp = () => {
             </span>
           </label>
           <input
-            disabled={isLoading}
+            disabled={isPending}
             id="fullName"
             className="flex-1 col-span-2 px-2 py-2 rounded-md bg-[var(--color-bg)] border-[2px] border-[var(--color-border)]"
             type="text"
@@ -54,7 +54,7 @@ const SignUp = () => {
             </span>
           </label>
           <input
-            disabled={isLoading}
+            disabled={isPending}
             id="emailAddress"
             className="flex-1 px-2 py-2 rounded-md bg-[var(--color-bg)] border-[2px] border-[var(--color-border)]"
             type="email"
@@ -80,7 +80,7 @@ const SignUp = () => {
           </label>
 
           <input
-            disabled={isLoading}
+            disabled={isPending}
             id="password"
             className="flex-1 col-span-2 px-2 py-2 rounded-md bg-[var(--color-bg)] border-[2px] border-[var(--color-border)]"
             type="password"
@@ -106,7 +106,7 @@ const SignUp = () => {
           </label>
 
           <input
-            disabled={isLoading}
+            disabled={isPending}
             id="confirmPassword"
             className="flex-1 col-span-2 px-2 py-2 rounded-md bg-[var(--color-bg)] border-[2px] border-[var(--color-border)]"
             type="password"
@@ -120,7 +120,7 @@ const SignUp = () => {
 
         <div className="w-full flex gap-4 pt-2 pb-2 justify-end">
           <button
-            disabled={isLoading}
+            disabled={isPending}
             onClick={reset}
             type="reset"
             className="cursor-pointer text-[var(--color-primary)] bg-[var(--color-second)]  border-[2px] border-[var(--color-border)] px-2 py-2 rounded-md"
@@ -128,7 +128,7 @@ const SignUp = () => {
             Cancel
           </button>
           <button
-            disabled={isLoading}
+            disabled={isPending}
             className="cursor-pointer text-[var(--color-second)] bg-[var(--color-primary)]  px-2 py-2 rounded-md border-[2px] border-[var(--color-border)]"
           >
             Create new user

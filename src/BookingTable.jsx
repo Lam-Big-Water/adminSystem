@@ -21,9 +21,9 @@ import {
 import ConfirmDelete from "./ConfirmDelete";
 
 const BookingTable = () => {
-  const { bookings, isLoading } = useBookings();
+  const { bookings, isPending } = useBookings();
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isPending) return <h1>Loading...</h1>;
 
   if (!bookings.length) return <h1>Empty...</h1>;
   return (
@@ -53,11 +53,9 @@ const BookingTable = () => {
 const BookingRow = ({
   booking: {
     id: bookingId,
-    created_at,
     startDate,
     endDate,
     numNights,
-    numGuests,
     totalPrice,
     status,
     guests: { fullName: guestName, email },

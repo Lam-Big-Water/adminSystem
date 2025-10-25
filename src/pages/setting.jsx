@@ -4,7 +4,7 @@ import { useUpdateSetting } from "../query/settings/useUpdateSetting";
 
 const setting = () => {
   const {
-    isLoading,
+    isPending,
     settings: {
       minBookingLength,
       maxBookingLength,
@@ -14,7 +14,7 @@ const setting = () => {
   } = useSettings();
   const { isUpdating, updateSetting } = useUpdateSetting();
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isPending) return <h1>Loading...</h1>;
 
   function handleUpdate(e, field) {
     const { value } = e.target;

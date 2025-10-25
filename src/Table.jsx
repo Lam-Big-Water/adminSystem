@@ -7,9 +7,9 @@ import AddCabin from "./AddCabin";
 import Filter from "./Filter";
 
 const Table = () => {
-  const { data, count, isLoading } = useGetCabinsByOpt();
+  const { data, count, isPending } = useGetCabinsByOpt();
 
-  if (isLoading)
+  if (isPending)
     return (
       <div className="min-h-full flex flex-col items-center p-6">
         <TableSkeleton />

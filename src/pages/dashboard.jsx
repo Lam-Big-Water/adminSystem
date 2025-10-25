@@ -11,11 +11,11 @@ import Spinner from "../Spinner";
 import { HiOutlineBellAlert, HiOutlineCurrencyDollar, HiOutlineCheckBadge, HiOutlineChartBar } from "react-icons/hi2";
 
 const dashboard = () => {
-  const { bookings, isLoading: isLoading1 } = useRecentBookings();
-  const { confirmedStays, isLoading: isLoading2, numDays } = useRecentStays();
-  const { cabins, isLoading: isLoading3 } = useGetAllCabins();
+  const { bookings, isPending: isPending1 } = useRecentBookings();
+  const { confirmedStays, isPending: isPending2, numDays } = useRecentStays();
+  const { cabins, isPending: isPending3 } = useGetAllCabins();
 
-  if (isLoading1 || isLoading2 || isLoading3) return <Spinner />;
+  if (isPending1 || isPending2 || isPending3) return <Spinner />;
 
   const numBookings = bookings.length;
   const sales = bookings.reduce((acc, cur) => acc + cur.totalPrice, 0);

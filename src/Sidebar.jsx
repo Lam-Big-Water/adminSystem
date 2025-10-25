@@ -24,11 +24,9 @@ import { useDarkMode } from "./context/DarkModeContext";
 
 const Sidebar = () => {
   const [barToggle, setBarToggle] = React.useState(false);
-  const { isLoading, logout } = useLogout();
+  const { isPending, logout } = useLogout();
   const { isDarkMode, toggleDarkMode } = useDarkMode();
-  function handleClose () {
 
-  }
   return (
     <>
       <div className={`flex flex-col w-full max-w-[300px] h-full p-4 text-[var(--color-primary)] border-r border-[var(--color-border)] max-lg:hidden`}>
@@ -100,7 +98,7 @@ const Sidebar = () => {
                   {isDarkMode ? "Light Mode" : "Dark Mode"}
                 </Button>
                 <Button
-                  disabled={isLoading}
+                  disabled={isPending}
                   onClick={logout}
                   icon={<HiArrowRightOnRectangle className="text-[1.3rem]" />}
                 >
@@ -187,7 +185,7 @@ const Sidebar = () => {
                   {isDarkMode ? "Light Mode" : "Dark Mode"}
                 </Button>
                 <Button
-                  disabled={isLoading}
+                  disabled={isPending}
                   onClick={logout}
                   icon={<HiArrowRightOnRectangle className="text-[1.3rem]" />}
                 >

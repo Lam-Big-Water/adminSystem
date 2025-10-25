@@ -9,7 +9,7 @@ import {getAll} from 'server/api'
 
 export function useGetAll () {
     const {
-        isLoading,
+        isPending,
         data,
         error,
     } = useQuery({
@@ -17,7 +17,7 @@ export function useGetAll () {
         queryFn: getAll,
     });
 
-    return {isLoading, data, error};
+    return {isPending, data, error};
 }
 ```
 
@@ -36,7 +36,7 @@ import {create} from 'server/api'
 export function useCreate () {
     const {queryClient} = useQueryClient();
     
-    const {mutate, isLoading} = useMutation({
+    const {mutate, isPending} = useMutation({
         mutationFn: create,
         onSuccess: () => {
             // the QueryClient has an invalidateQueries method that lets you intelligently mark queries as stale and potentially refetch them too!
@@ -46,7 +46,7 @@ export function useCreate () {
         onError: (err) => console.error(err.message),
     });
 
-    return {mutate, isLoading}
+    return {mutate, isPending}
 }
 ```
 
@@ -146,5 +146,5 @@ flowchart TD
 ```
 
 ```
-react query v5 {isLoading} status and flag have been renamed to {isPending}
+react query v5 {isPending} status and flag have been renamed to {isPending}
 ```

@@ -8,8 +8,8 @@ import { formatCurrency, formatDistanceFromNow } from "../utils/helpers";
 import { useMoveBack } from "../hooks/useMoveBack";
 
 const checkin = () => {
-  const { booking, isLoading } = useBooking();
-  const { settings, isLoading: isLoadingSettings } = useSettings();
+  const { booking, isPending } = useBooking();
+  const { settings, isPending: isPendingSettings } = useSettings();
   const [addBreakfast, setAddBreakfast] = useState(false);
   const [confirmPaid, setConfirmPaid] = useState(false);
   const moveBack = useMoveBack();
@@ -17,7 +17,7 @@ const checkin = () => {
 
   useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking]);
 
-  if (isLoading || isLoadingSettings) return <h1>Loading...</h1>;
+  if (isPending || isPendingSettings) return <h1>Loading...</h1>;
 
   const {
     id: bookingId,
@@ -33,7 +33,7 @@ const checkin = () => {
     hasBreakfast,
     observations,
     isPaid,
-    guests: { fullName: guestName, email, country, countryFlag, nationalID },
+    guests: { fullName: guestName, email, nationalID },
     cabins: { name: cabinName },
   } = booking;
 
