@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import supabase from "./server/supabase"
 import {useLogin} from './query/auth/useLogin'
 import SpinnerMini from './SpinnerMini'
 
@@ -6,6 +7,12 @@ const LoginForm = () => {
   const [email, setEmail] = useState("samlam@showcase.com");
   const [password, setPassword] = useState("123123123");
   const { login, isPending } = useLogin();
+
+  const signUp = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+  };
 
 
   function handleSubmit(e) {
@@ -47,7 +54,13 @@ const LoginForm = () => {
         <div className="flex flex-col gap-4 pt-4 pb-2">
           <button className="flex justify-center items-center text-xl font-bold cursor-pointer text-[var(--color-second)] bg-[var(--color-primary)] border-[2px] border-[var(--color-border)] px-4 py-3 rounded-md">{isPending ? <SpinnerMini /> : "Login"}</button>
         </div>
+
+
       </form>
+
+      <div className="flex flex-col gap-4 pt-4 pb-2">
+          <button onClick={signUp} className="flex justify-center items-center text-xl font-bold cursor-pointer text-[var(--color-second)] bg-[var(--color-primary)] border-[2px] border-[var(--color-border)] px-4 py-3 rounded-md">Google</button>
+        </div>
     </div>
   );
 };
