@@ -148,3 +148,19 @@ flowchart TD
 ```
 react query v5 {isPending} status and flag have been renamed to {isPending}
 ```
+
+/*
+materials
+
+Name            Format                   Type     Description
+id              bigint                   number   
+created_at      timestamp with time zone string   
+item_name       text                     string   
+position        text                     string   
+description     text                     string   
+item_status     text                     string   
+item_quantity   smallint                 number
+
+
+
+*/

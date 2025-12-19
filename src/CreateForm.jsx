@@ -33,6 +33,8 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
   }
 
   function onSubmit(data) {
+        console.log(data.image)
+
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
     if (isEditSession) {

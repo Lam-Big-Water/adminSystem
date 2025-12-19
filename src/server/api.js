@@ -70,6 +70,7 @@ export async function getDataWithFilters ({filter, page}) {
 }
 
 export async function createCombineEdit(newData, id) {
+  console.log(newData)
 
   const hasImagePath = newData.image?.startsWith?.(supabaseUrl);
 
