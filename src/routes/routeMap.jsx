@@ -7,7 +7,7 @@ import Dashboard from '../pages/dashboard';
 import User from '../pages/user'
 import Cabin from '../pages/cabin';
 import Bookings from '../pages/bookings'
-import Setting from '../pages/setting'
+import Settings from '../pages/settings'
 import PageNotFound from '../pages/pageNotFound';
 import Account from "../Account";
 import Booking from "../pages/booking";
@@ -45,11 +45,11 @@ export const routeMap = ([
           element: < Checkin/>
         },
         {
-          path: "setting", element: <Setting />
+          path: "settings", element: <Settings />
           
         },
         {
-          path: "user",
+          path: "users",
           element: <User />
         },
         {
