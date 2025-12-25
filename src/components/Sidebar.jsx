@@ -7,19 +7,23 @@ import {
   Logs,
   Settings,
   Users,
+  IdCard,
+  Sun,
+  LogOut,
+  Moon,
 } from "lucide-react";
 import React from "react";
 import SidebarItem from "./SidebarItem";
-import { Modal } from "../compose/Modal";
-import { Menus, Toggle, List, Button } from "../compose/Menus";
+import { Menus, Toggle, MenuList, MenusButton } from "../compose/Menus2";
 import { Link } from "react-router-dom";
+import { useDarkMode } from "../context/DarkModeContext";
 
 const Sidebar = () => {
   const [expanded, setExpanded] = React.useState(true);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <div>
-      <aside className="h-full flex">
+      <aside className="h-screen flex">
         <nav className="h-full flex flex-col bg-amber-50 dark:bg-black text-black dark:text-amber-50 font-medium border-r shadow-sm p-2">
           <div className="p-4 pb-2 flex justify-between items-center">
             <div
@@ -101,26 +105,46 @@ const Sidebar = () => {
                 <h4 className="font-semibold">Sam Lam</h4>
                 <span className="text-xs">SamLam@gmail.com</span>
               </div>
-              <Modal>
-                <Menus>
-                  <Toggle
-                    styles="flex justify-center w-7 p-1 hover:bg-[var(--color-block)] cursor-pointer rounded-sm"
-                    positionY={-164}
-                    positionX={260}
-                    icon={<MoreVertical size={20} />}
-                    className="p-1.5 rounded-lg text-black cursor-pointer dark:text-amber-50 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-gary-100/10 dark:hover:text-black"
-                    
-                  />
-                    <List>
-                      <Button>Logout</Button>
-                    </List>
-                </Menus>
-              </Modal>
+              <Menus>
+                <Toggle id="user-menu">
+                  <MoreVertical size={20} />
+                  <MenuList id="user-menu" positionY={24} positionX={310}>
+                    <div className="flex flex-col p-2 gap-3">
+                      <MenusButton>
+                        <div className="flex gap-2 items-center">
+                          <IdCard size={20} strokeWidth={1} />
+                          <Link to="/account">Account</Link>
+                        </div>
+                      </MenusButton>
+
+                      <MenusButton onClick={toggleDarkMode}>
+                        {isDarkMode ? (
+                          <div className="flex gap-2 items-center">
+                            <Sun size={20} strokeWidth={1} />
+                            <span>Light Mode</span>
+                          </div>
+                        ) : (
+                          <div className="flex gap-2 items-center">
+                            <Moon size={20} strokeWidth={1} />
+                            <span>Dark Mode</span>
+                          </div>
+                        )}
+                      </MenusButton>
+
+                      <MenusButton>
+                        <div className="flex gap-2 items-center">
+                          <LogOut size={20} strokeWidth={1} />
+                          <span>Log out</span>
+                        </div>
+                      </MenusButton>
+                    </div>
+                  </MenuList>
+                </Toggle>
+              </Menus>
             </div>
           </div>
         </nav>
       </aside>
-    </div>
   );
 };
 
