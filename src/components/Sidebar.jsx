@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
       <aside className="h-screen flex">
-        <nav className="h-full flex flex-col bg-amber-50 dark:bg-black text-black dark:text-amber-50 font-medium border-r shadow-sm p-2">
+        <nav className="h-full flex flex-col bg-white dark:bg-black text-slate-950 dark:text-white font-medium border-r border-slate-200 shadow-sm p-2">
           <div className="p-4 pb-2 flex justify-between items-center">
             <div
               className={`rounded-sm overflow-hidden transition-all ${
@@ -48,7 +48,6 @@ const Sidebar = () => {
               text="Dashboard"
               link="/dashboard"
               alert={false}
-              active={true}
               expanded={expanded}
             />
 
@@ -57,7 +56,6 @@ const Sidebar = () => {
               text="Bookings"
               link="/bookings"
               alert={false}
-              active={false}
               expanded={expanded}
             />
 
@@ -66,7 +64,6 @@ const Sidebar = () => {
               text="Cabins"
               link="/cabins"
               alert={false}
-              active={false}
               expanded={expanded}
             />
 
@@ -75,7 +72,6 @@ const Sidebar = () => {
               text="Users"
               link="/users"
               alert={false}
-              active={false}
               expanded={expanded}
             />
 
@@ -84,7 +80,6 @@ const Sidebar = () => {
               text="Settings"
               link="/settings"
               alert={false}
-              active={false}
               expanded={expanded}
             />
           </ul>
