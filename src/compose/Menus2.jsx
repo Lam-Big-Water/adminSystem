@@ -64,7 +64,7 @@ export const MenuList = ({
       }}
       className="fixed z-50"
     >
-      <ul className="bg-black p-1 rounded-lg text-amber-50 text-sm" ref={ref}>
+      <ul className="overflow-hidden last:border-b-0 font-medium bg-white text-slate-950 dark:bg-black dark:text-white border border-slate-200 rounded-lg text-sm" ref={ref}>
         {children}
       </ul>
     </div>,
@@ -82,9 +82,9 @@ export const MenusButton = ({ children, onClick }) => {
     close();
   }
   return (
-    <li>
+    <li className="border-b border-slate-200">
       <button
-        className="w-full p-1.5 rounded-sm hover:bg-zinc-600"
+        className="cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-slate-100 dark:hover:bg-gray-800"
         onClick={handleClick}
       >
         {children}

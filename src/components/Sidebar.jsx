@@ -104,10 +104,10 @@ const Sidebar = () => {
                 <Toggle id="user-menu">
                   <MoreVertical size={20} />
                   <MenuList id="user-menu" positionY={24} positionX={310}>
-                    <div className="flex flex-col p-2 gap-3">
+                    <div className="flex flex-col">
                       <MenusButton>
                         <div className="flex gap-2 items-center">
-                          <IdCard size={20} strokeWidth={1} />
+                          <IdCard size={18} strokeWidth={1.5} />
                           <Link to="/account">Account</Link>
                         </div>
                       </MenusButton>
@@ -115,12 +115,12 @@ const Sidebar = () => {
                       <MenusButton onClick={toggleDarkMode}>
                         {isDarkMode ? (
                           <div className="flex gap-2 items-center">
-                            <Sun size={20} strokeWidth={1} />
+                            <Sun size={18} strokeWidth={1.5} />
                             <span>Light Mode</span>
                           </div>
                         ) : (
                           <div className="flex gap-2 items-center">
-                            <Moon size={20} strokeWidth={1} />
+                            <Moon size={18} strokeWidth={1.5} />
                             <span>Dark Mode</span>
                           </div>
                         )}
@@ -128,7 +128,7 @@ const Sidebar = () => {
 
                       <MenusButton>
                         <div className="flex gap-2 items-center">
-                          <LogOut size={20} strokeWidth={1} />
+                          <LogOut size={18} strokeWidth={1.5} />
                           <span>Log out</span>
                         </div>
                       </MenusButton>
