@@ -2,7 +2,7 @@ import React from "react";
 import { useSettings } from "../query/settings/useSettings";
 import { useUpdateSetting } from "../query/settings/useUpdateSetting";
 
-const setting = () => {
+const settings = () => {
   const {
     isPending,
     settings: {
@@ -104,4 +104,4 @@ const setting = () => {
   );
 };
 
-export default setting;
+export default settings;

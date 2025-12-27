@@ -1,15 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
+import Sidebar from "./components/Sidebar"
 
 const AppLayout = () => {
   return (
-    <div className="relative w-full h-full flex justify-center items-center p-6">
+    <div className="relative w-full h-full">
 
-      <div className="flex gap-2 w-full max-w-[1200px] h-full max-h-[900px] border border-[var(--color-border)] rounded-2xl">
+      <div className="flex gap-2 w-full border border-[var(--color-border)] rounded-2xl">
         <Sidebar />
-        <div className="w-full overflow-y-auto p-6">
+        <div className="w-full p-6 overflow-auto h-screen">
         <Outlet />
         </div>
       </div>
