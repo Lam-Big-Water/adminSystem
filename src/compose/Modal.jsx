@@ -1,4 +1,4 @@
-import { cloneElement, createContext, useContext, useState, useEffect } from "react";
+import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 
 import FocusLock from 'react-focus-lock';
