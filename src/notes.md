@@ -164,3 +164,11 @@ item_quantity   smallint                 number
 
 
 */
+
+styles:
+
+bg-stone-50 dark:bg-stone-950 
+text-slate-950 dark:text-slate-200
+border-stone-200 dark:border-stone-900
+
+hover:bg-gray-200 dark:hover:bg-neutral-800/70

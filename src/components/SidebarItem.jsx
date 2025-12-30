@@ -5,8 +5,8 @@ const SidebarItem = ({ expanded, icon, text, link, alert }) => {
     <NavLink
       to={link}
       className={({ isActive }) =>
-        `relative dark:text-amber-50 flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group 
-        ${isActive ? "bg-slate-100 dark:bg-gray-800" : "hover:bg-slate-100 dark:hover:bg-gray-800"}
+        `relative dark:text-amber-50 flex items-center py-2 px-3 my-1 text-sm font-medium rounded-md cursor-pointer transition-colors group 
+        ${isActive ? "bg-gray-200 dark:bg-neutral-800/70" : "hover:bg-gray-200 dark:hover:bg-neutral-800/70"}
         ${expanded ? "justify-start" : "justify-center"}`
       }
       end={link === "/dashboard"} // 如果 dashboard 是根路径，需要精确匹配
@@ -19,7 +19,7 @@ const SidebarItem = ({ expanded, icon, text, link, alert }) => {
           
           <span
             className={`overflow-hidden transition-all ${
-              expanded ? "w-52 ml-3" : "w-0"
+              expanded ? "w-32 ml-3" : "w-0"
             } ${isActive ? "font-black" : ""}`}
           >
             {text}
