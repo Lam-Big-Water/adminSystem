@@ -5,6 +5,7 @@ import TableSkeleton from "./TableSkeleton";
 import Pagination from "./Pagination";
 import AddCabin from "./AddCabin";
 import Filter from "./Filter";
+import TableCaption from "./components/TableCaption";
 
 const Table = () => {
   const { data, count, isPending } = useGetCabinsByOpt();
@@ -28,6 +29,9 @@ const Table = () => {
             { value: "with-discount", label: "With discount" },
           ]}
         />
+      </div>
+      <div>
+        <TableCaption />
       </div>
       <div className="min-h-full mt-6 overflow-x-hidden">
         <div className="overflow-y-auto w-full rounded-2xl border-[1.4px] border-[var(--color-border)]">
