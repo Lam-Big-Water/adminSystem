@@ -20,15 +20,15 @@ const ImageUploadField = ({
     <div className='text-[var(--text-primary)]'>
         {isEditSession ? (
             <div className='relative'>
-                <label htmlFor="current photo" className='text-[var(--text-primary)] mb-2 block text-sm font-medium'>
+                <label htmlFor="current photo" className='text-indigo-950 mb-2 block text-sm font-medium'>
                     Current photo
                 </label>
-                <img className='w-full max-w-[400px] max-h-[200px] object-cover rounded-sm' src={previewImage || currentImage} alt="" />
+                <img className='w-full max-h-[200px] object-cover rounded-sm' src={previewImage || currentImage} alt="" />
 
                 <div>
                     <label 
                     htmlFor={id}
-                    className='p-2 text-[var(--text-primary)] bg-[var(--color-block)] absolute top-2 right-1 block text-sm font-medium cursor-pointer rounded-sm'
+                    className='p-2 bg-black dark:bg-white text-amber-50 dark:text-indigo-950 absolute top-2 right-1 block text-sm font-medium cursor-pointer rounded-sm'
                     tabIndex={0}
                     onKeyDown={(e) => {
                         if (e.key === " " || e.key === "Enter") {

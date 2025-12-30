@@ -7,6 +7,10 @@ import FormField from "./FormField";
 import ImageUploadField from "./ImageUploadField";
 import Button from "./Button";
 
+import FocusLock from "react-focus-lock";
+
+import { X } from "lucide-react";
+
 const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
   const { id: editId, image: currentImage, ...editValue } = cabinToEdit;
   const isEditSession = Boolean(editId);
@@ -33,7 +37,7 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
   }
 
   function onSubmit(data) {
-        console.log(data.image)
+    console.log(data.image);
 
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
@@ -43,7 +47,7 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
         {
           onSuccess: () => {
             reset();
-            onCloseModal?.()
+            onCloseModal?.();
           },
         }
       );
@@ -53,7 +57,7 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
         {
           onSuccess: () => {
             reset();
-            onCloseModal?.()
+            onCloseModal?.();
           },
         }
       );
@@ -61,112 +65,125 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
   }
 
   return (
-    <>
-    
-      <h2 id="modal-title" className="text-xl font-bold mb-4">
-        {isEditSession ? "Edit Cabin" : "Add New Cabin"}
-      </h2>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="grid gap-4">
-          <div className="grid gap-4 md:grid-cols-2 items-end">
-            <FormField
-              label="Name"
-              id="name"
-              register={register}
-              errors={errors}
-              validationRules={{ required: "This field is required!" }}
-            />
-
-            <FormField
-              label="Maximum capacity"
-              id="maxCapacity"
-              type="number"
-              register={register}
-              errors={errors}
-              validationRules={{
-                required: "This field is required",
-                min: {
-                  value: 1,
-                  message: "Capacity should be at least 1",
-                },
-              }}
-            />
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 items-end">
-            <FormField
-              label="Regular price"
-              id="regularPrice"
-              type="number"
-              register={register}
-              errors={errors}
-              validationRules={{
-                required: "This field is required",
-                min: {
-                  value: 1,
-                  message: "Price should be at least 1",
-                },
-              }}
-            />
-
-            <FormField
-              label="Discount"
-              id="discount"
-              type="number"
-              defaultValue={0}
-              register={register}
-              errors={errors}
-              validationRules={{
-                required: "Discount cannot be negative",
-              }}
-            />
-          </div>
-
-          <FormField
-            label="Description for website"
-            id="description"
-            type="textarea"
-            register={register}
-            errors={errors}
-            validationRules={{
-              required: "This field is required",
-            }}
-          />
-
-          <ImageUploadField
-            label="Upload photo"
-            id="image"
-            register={register}
-            errors={errors}
-            previewImage={previewImage}
-            currentImage={currentImage}
-            handleImageChange={handleImageChange}
-            isEditSession={isEditSession}
-            required={!isEditSession}
-          />
-
-          <div className="flex justify-end gap-4">
-            <Button
-              size="small"
-              onClick={() => onCloseModal?.()}
-              type="reset"
-              variation="secondary"
-
-            >
-              Cancel
-            </Button>
-            <Button
-              size="small"
-              disabled={isWorking}
-            >
-              {isEditSession ? "Edit" : "Create"}
-            </Button>
-          </div>
+    <FocusLock>
+      <div className="overflow-y-auto max-h-150 fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-lg flex flex-col gap-4 bg-white text-indigo-950 font-medium rounded-2xl shadow-lg max-sm:w-full">
+        <div className="w-full bg-white sticky top-0 flex flex-col gap-2 text-start px-6 pt-6">
+          <h2 className="text-lg leading-none font-semibold">
+            {isEditSession ? "Edit Cabin" : "Add New Cabin"}
+          </h2>
+          <p className="text-sm text-zinc-400">
+            Create new user here. Click save when you're done.
+          </p>
+          <button
+          onClick={() => onCloseModal?.()}
+          className="flex items-center justify-center cursor-pointer absolute top-4 right-4 text-zinc-500 hover:text-zinc-700 p-1 rounded-md active:outline-2 active:outline-zinc-400"
+        >
+          <X size={16} />
+        </button>
         </div>
-      </form>
-    </>
+
+        <form className="px-6 pb-4" onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid gap-4">
+            <div className="grid gap-4 md:grid-cols-2 items-end">
+              <FormField
+                label="Name"
+                id="name"
+                register={register}
+                errors={errors}
+                validationRules={{ required: "This field is required!" }}
+              />
+
+              <FormField
+                label="Maximum capacity"
+                id="maxCapacity"
+                type="number"
+                register={register}
+                errors={errors}
+                validationRules={{
+                  required: "This field is required",
+                  min: {
+                    value: 1,
+                    message: "Capacity should be at least 1",
+                  },
+                }}
+              />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 items-end">
+              <FormField
+                label="Regular price"
+                id="regularPrice"
+                type="number"
+                register={register}
+                errors={errors}
+                validationRules={{
+                  required: "This field is required",
+                  min: {
+                    value: 1,
+                    message: "Price should be at least 1",
+                  },
+                }}
+              />
+
+              <FormField
+                label="Discount"
+                id="discount"
+                type="number"
+                defaultValue={0}
+                register={register}
+                errors={errors}
+                validationRules={{
+                  required: "Discount cannot be negative",
+                  min: {
+                    value: 1,
+                    message: "Price should be at least 1",
+                  },
+                }}
+              />
+            </div>
+
+            <FormField
+              label="Description for website"
+              id="description"
+              type="textarea"
+              register={register}
+              errors={errors}
+              validationRules={{
+                required: "This field is required",
+              }}
+            />
+
+            <ImageUploadField
+              label="Upload photo"
+              id="image"
+              register={register}
+              errors={errors}
+              previewImage={previewImage}
+              currentImage={currentImage}
+              handleImageChange={handleImageChange}
+              isEditSession={isEditSession}
+              required={!isEditSession}
+            />
+
+            <div className="flex justify-end gap-4">
+              <Button
+                size="small"
+                onClick={() => onCloseModal?.()}
+                type="reset"
+                variation="secondary"
+              >
+                Cancel
+              </Button>
+              <Button size="small" disabled={isWorking}>
+                {isEditSession ? "Edit" : "Create"}
+              </Button>
+            </div>
+          </div>
+        </form>
+
+        
+      </div>
+    </FocusLock>
   );
 };
 

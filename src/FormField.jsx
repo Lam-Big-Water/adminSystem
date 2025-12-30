@@ -20,12 +20,12 @@ const FormField = ({
     <div className={className}>
       <label 
       htmlFor={id}
-      className={`mb-2 block text-base font-normal ${isError ? "text-red-400" : "text-[var(--color-primary)]"}`}
+      className={`text-sm leading-none select-none col-span-2 max-sm:w-full ${
+          isError ? "text-red-500" : ""
+        }`}
       >
       {label}
-      {isError && (
-        <span className='text-[0.75rem]'>{` - ${errorMessage}`}</span>
-      )}
+
       </label>
 
       {type === "textarea" ? (
@@ -34,8 +34,8 @@ const FormField = ({
           autoComplete={autoComplete}
           {...register(id, validationRules)}
           defaultValue={defaultValue}
-          className={`w-full min-h-26 bg-[var(--filed-bg)] rounded-sm border-[1.8px] border-[var(--color-border)] p-2 text-[var(--color-primary)] ${
-            props.readOnly ? "bg-gray-700" : ""
+          className={`w-full min-h-26 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-zinc-400 max-sm:w-full ${
+            isError ? "border-red-500 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300" : "border-zinc-400 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-zinc-400"
           }`}
           {...props}
         />
@@ -46,11 +46,17 @@ const FormField = ({
           autoComplete={autoComplete}
           {...register(id, validationRules)}
           defaultValue={defaultValue}
-          className={`relative w-full bg-[var(--filed-bg)] rounded-sm border-[1.8px] border-[var(--color-border)] p-2 text-[var(--color-primary)] ${
-            props.readOnly ? "bg-gray-700" : ""
+          className={`w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-zinc-400 max-sm:w-full ${
+            isError ? "border-red-500 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300" : "border-zinc-400 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-zinc-400"
           }`}
           {...props}
         />
+        
+      )}
+      {errorMessage && (
+        <p className="text-red-500 text-xs mt-1 col-start-3 col-end-6 max-sm:col-span-1">
+          {errorMessage}
+        </p>
       )}
     </div>
   )
