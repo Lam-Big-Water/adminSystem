@@ -66,8 +66,11 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
 
   return (
     <FocusLock>
-      <div className="overflow-y-auto max-h-150 fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-lg flex flex-col gap-4 bg-white text-indigo-950 font-medium rounded-2xl shadow-lg max-sm:w-full">
-        <div className="w-full bg-white sticky top-0 flex flex-col gap-2 text-start px-6 pt-6">
+      <div className=" overflow-y-auto max-h-150 fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-lg flex flex-col gap-4 text-slate-950 dark:text-slate-200
+ bg-stone-50 dark:bg-stone-950 
+ font-medium rounded-2xl shadow-lg max-sm:w-full">
+        <div className="w-full sticky top-0 flex flex-col gap-2 text-start px-6 pt-6 bg-stone-50 dark:bg-stone-950 
+">
           <h2 className="text-lg leading-none font-semibold">
             {isEditSession ? "Edit Cabin" : "Add New Cabin"}
           </h2>
@@ -75,11 +78,11 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
             Create new user here. Click save when you're done.
           </p>
           <button
-          onClick={() => onCloseModal?.()}
-          className="flex items-center justify-center cursor-pointer absolute top-4 right-4 text-zinc-500 hover:text-zinc-700 p-1 rounded-md active:outline-2 active:outline-zinc-400"
-        >
-          <X size={16} />
-        </button>
+            onClick={() => onCloseModal?.()}
+            className="flex items-center justify-center cursor-pointer absolute top-4 right-4 text-zinc-500 hover:text-zinc-700 p-1 rounded-md active:outline-2 active:outline-zinc-400"
+          >
+            <X size={16} />
+          </button>
         </div>
 
         <form className="px-6 pb-4" onSubmit={handleSubmit(onSubmit)}>
@@ -166,22 +169,30 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
             />
 
             <div className="flex justify-end gap-4">
-              <Button
-                size="small"
+              <button
                 onClick={() => onCloseModal?.()}
                 type="reset"
-                variation="secondary"
+                className="text-sm cursor-pointer text-slate-950 dark:text-slate-200
+ bg-stone-50 dark:bg-stone-950 
+ border border-stone-200 dark:border-stone-900
+ rounded-md py-2 px-4 transition-colors duration-200"
               >
                 Cancel
-              </Button>
-              <Button size="small" disabled={isWorking}>
+              </button>
+
+              <button
+                disabled={isWorking}
+                className="text-sm cursor-pointer dark:text-slate-950 text-slate-200
+ dark:bg-stone-50 bg-stone-950 
+ border border-stone-200 dark:border-stone-900
+ rounded-md py-2 px-4 transition-colors duration-200"
+              >
                 {isEditSession ? "Edit" : "Create"}
-              </Button>
+              </button>
+
             </div>
           </div>
         </form>
-
-        
       </div>
     </FocusLock>
   );
