@@ -57,7 +57,7 @@ export const Window = ({
 
   return createPortal(
     <div
-      className="fixed inset-0 w-full h-screen bg-black/10 z-100 transition-all duration-500 backdrop-blur-xs"
+      className="fixed inset-0 w-full h-screen bg-black/50 z-100 transition-all duration-500"
     >
       <div className="" ref={ref}>
         {React.cloneElement(
