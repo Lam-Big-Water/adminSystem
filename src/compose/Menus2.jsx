@@ -30,7 +30,7 @@ export const Toggle = ({ id, children }) => {
 
   return (
     <button
-      className="p-1 rounded-sm hover:bg-gray-200 dark:hover:bg-neutral-800/70"
+      className="p-1 rounded-sm hover:bg-primary/10"
       onClick={handleClick}
     >
       {children}
