@@ -1,6 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import {useOutsideClick} from "../hooks/useOutsideClick";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const MenuContext = React.createContext(null);
 
@@ -23,34 +23,28 @@ export const Toggle = ({ id, children }) => {
   if (!context) return null;
   const { openId, close, open } = context;
 
-  function handleClick() {
-    if (openId === "" || openId !== id) {
-      open(id);
-    } else {
-      close();
-    }
+  function handleClick(e) {
+    e.stopPropagation();
+    openId === "" || openId !== id ? open(id) : close();
   }
 
   return (
-    <button className="relative" onClick={handleClick}>
+    <button
+      className="p-1 rounded-sm hover:bg-primary/10"
+      onClick={handleClick}
+    >
       {children}
     </button>
   );
 };
 
-export const MenuList = ({
-  id,
-  children,
-  positionY = 8,
-  positionX = 0,
-}) => {
-  console.log(positionX, positionY);
+export const MenuList = ({ id, children, positionY = 8, positionX = 0 }) => {
   const context = React.useContext(MenuContext);
   const ref = useOutsideClick(() => {
     if (context) {
       context.close();
     }
-  }, true);
+  }, false);
   if (!context) return null;
   const { openId } = context;
 
@@ -64,7 +58,11 @@ export const MenuList = ({
       }}
       className="fixed z-50"
     >
-      <ul className="overflow-hidden last:border-b-0 font-medium bg-white text-slate-950 dark:bg-black dark:text-white border border-slate-200 rounded-lg text-sm" ref={ref}>
+      <ul
+        className="overflow-hidden last:border-b-0 font-medium bg-white text-slate-950 dark:bg-black dark:text-white border border-stone-200 dark:border-stone-900
+ rounded-lg text-sm"
+        ref={ref}
+      >
         {children}
       </ul>
     </div>,
@@ -82,9 +80,12 @@ export const MenusButton = ({ children, onClick }) => {
     close();
   }
   return (
-    <li className="border-b border-slate-200">
+    <li
+      className="text-slate-950 dark:text-slate-200
+     bg-stone-50 dark:bg-stone-950 border-b border-stone-200 dark:border-stone-900"
+    >
       <button
-        className="cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-slate-100 dark:hover:bg-gray-800"
+        className="cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-gray-200 dark:hover:bg-neutral-800/70"
         onClick={handleClick}
       >
         {children}
