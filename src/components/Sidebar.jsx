@@ -1,5 +1,5 @@
 import {
-  MoreVertical,
+  ChevronsUpDown,
   ChevronLast,
   ChevronFirst,
   LayoutDashboard,
@@ -23,9 +23,11 @@ const Sidebar = () => {
   const [expanded, setExpanded] = React.useState(true);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const { isPending, logout } = useLogout();
+  let positionX = expanded ? 250 : 86;
+  let positionY = 24;
   return (
     <aside className="h-screen flex">
-      <nav className="h-full flex flex-col bg-stone-50 dark:bg-stone-950 text-slate-950 dark:text-slate-200 font-medium border-r border-stone-100 dark:border-stone-900 shadow-sm p-2">
+      <nav className="h-full flex flex-col bg-sidebar text-foreground font-medium border-r border-border shadow-sm p-2">
         <div className="p-4 pb-2 flex justify-between items-center">
           <div
             className={`rounded-sm overflow-hidden transition-all ${
@@ -37,7 +39,7 @@ const Sidebar = () => {
 
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg text-stone-950 dark:text-stone-50 bg-stone-50 dark:bg-stone-950  hover:bg-gray-200 dark:hover:bg-neutral-800/70 cursor-pointer "
+            className="p-1.5 rounded-lg text-foreground hover:bg-primary/10 cursor-pointer"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
@@ -45,102 +47,96 @@ const Sidebar = () => {
 
         <ul className="flex flex-col gap-0.5 flex-1 px-3">
           <SidebarItem
-            icon={<LayoutDashboard size={20} strokeWidth={2}/>}
+            icon={<LayoutDashboard size={20} strokeWidth={2} />}
             text="Dashboard"
             link="/dashboard"
-            alert={false}
             expanded={expanded}
           />
 
           <SidebarItem
-            icon={<Logs size={20} strokeWidth={2}/>}
+            icon={<Logs size={20} strokeWidth={2} />}
             text="Bookings"
             link="/bookings"
-            alert={false}
             expanded={expanded}
           />
 
           <SidebarItem
-            icon={<LayoutList size={20} strokeWidth={2}/>}
+            icon={<LayoutList size={20} strokeWidth={2} />}
             text="Cabins"
             link="/cabins"
-            alert={false}
             expanded={expanded}
           />
 
           <SidebarItem
-            icon={<Users size={20} strokeWidth={2}/>}
+            icon={<Users size={20} strokeWidth={2} />}
             text="Users"
             link="/users"
-            alert={false}
             expanded={expanded}
           />
 
           <SidebarItem
-            icon={<Settings size={20} strokeWidth={2}/>}
+            icon={<Settings size={20} strokeWidth={2} />}
             text="Settings"
             link="/settings"
-            alert={false}
             expanded={expanded}
           />
         </ul>
 
-        <div
-          className={`w-full flex p-1 gap-2 ${expanded ? "justify-start" : "justify-center"}`}
-        >
-          <div className="flex justify-center items-center w-10 h-10 p-1 rounded-md bg-indigo-300 text-amber-50 font-semibold">
-            Sam
-          </div>
-
+        <Menus>
+          <Toggle id="user-menu">
           <div
-            className={`flex justify-between items-center overflow-hidden transition-all ${
-              expanded ? "w-42" : "w-0"
-            }`}
+            className={`w-full flex p-1 rounded-md cursor-pointer text-start items-center ${expanded ? "justify-start gap-2" : "justify-center gap-0"}`}
           >
-            <div className="leading-4 text-xs">
-              <h4 className="font-black">Sam Lam</h4>
-              <span className="">SamLam@gmail.com</span>
+            <div className="flex justify-center items-center w-10 h-10 p-1 rounded-md bg-indigo-300 text-amber-50 font-semibold">
+              Sam
             </div>
-            <div>
-              <Menus>
-                <Toggle id="user-menu">
-                  <MoreVertical size={20} />
-                  <MenuList id="user-menu" positionY={24} positionX={242}>
-                    <div className="flex flex-col">
-                      <MenusButton>
-                        <div className="flex gap-2 items-center">
-                          <IdCard size={18} strokeWidth={1.5} />
-                          <Link to="/account">Account</Link>
-                        </div>
-                      </MenusButton>
 
-                      <MenusButton onClick={toggleDarkMode}>
-                        {isDarkMode ? (
-                          <div className="flex gap-2 items-center">
-                            <Sun size={18} strokeWidth={1.5} />
-                            <span>Light Mode</span>
-                          </div>
-                        ) : (
-                          <div className="flex gap-2 items-center">
-                            <Moon size={18} strokeWidth={1.5} />
-                            <span>Dark Mode</span>
-                          </div>
-                        )}
-                      </MenusButton>
+            <div
+              className={`flex justify-between items-center overflow-hidden transition-all ${
+                expanded ? "w-42" : "w-0"
+              }`}
+            >
+              <div className="leading-4 text-xs">
+                <h4 className="font-black">Sam Lam</h4>
+                <span className="">SamLam@gmail.com</span>
+              </div>
+              <div><ChevronsUpDown size={18} strokeWidth={1.5} /></div>
 
-                      <MenusButton onClick={logout} disabled={isPending}>
-                        <div className="text-red-500 flex gap-2 items-center">
-                          <LogOut size={18} strokeWidth={1.5} />
-                          <span>Log out</span>
-                        </div>
-                      </MenusButton>
+              <MenuList id="user-menu" positionY={positionY} positionX={positionX}>
+                <div className="flex flex-col">
+                  <MenusButton>
+                    <div className="flex gap-2 items-center">
+                      <IdCard size={18} strokeWidth={1.5} />
+                      <Link to="/account">Account</Link>
                     </div>
-                  </MenuList>
-                </Toggle>
-              </Menus>
+                  </MenusButton>
+
+                  <MenusButton onClick={toggleDarkMode}>
+                    {isDarkMode ? (
+                      <div className="flex gap-2 items-center">
+                        <Sun size={18} strokeWidth={1.5} />
+                        <span>Light Mode</span>
+                      </div>
+                    ) : (
+                      <div className="flex gap-2 items-center">
+                        <Moon size={18} strokeWidth={1.5} />
+                        <span>Dark Mode</span>
+                      </div>
+                    )}
+                  </MenusButton>
+
+                  <MenusButton onClick={logout} disabled={isPending}>
+                    <div className="text-red-500 flex gap-2 items-center">
+                      <LogOut size={18} strokeWidth={1.5} />
+                      <span>Log out</span>
+                    </div>
+                  </MenusButton>
+                </div>
+              </MenuList>
             </div>
           </div>
-        </div>
+          </Toggle>
+        </Menus>
       </nav>
     </aside>
   );
