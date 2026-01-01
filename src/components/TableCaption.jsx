@@ -18,7 +18,7 @@ const TableCaption = () => {
       </div>
       <div className="self-end">
         <Modal>
-          <Open opensWindowName="add">
+          <Open id="add">
             <button
               className="flex items-center gap-1 text-sm font-medium text-stone-200 dark:text-stone-950 bg-stone-950 dark:bg-stone-50  py-2 px-3 rounded-md hover:bg-neutral-800/70
 dark:hover:bg-gray-200 cursor-pointer transition-colors duration-200"
@@ -28,7 +28,7 @@ dark:hover:bg-gray-200 cursor-pointer transition-colors duration-200"
             </button>
           </Open>
 
-          <Window name="add">
+          <Window id="add">
             <CreateForm />
           </Window>
         </Modal>

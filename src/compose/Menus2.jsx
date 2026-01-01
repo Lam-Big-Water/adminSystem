@@ -23,29 +23,28 @@ export const Toggle = ({ id, children }) => {
   if (!context) return null;
   const { openId, close, open } = context;
 
-  function handleClick() {
-    if (openId === "" || openId !== id) {
-      open(id);
-    } else {
-      close();
-    }
+  function handleClick(e) {
+    e.stopPropagation();
+    openId === "" || openId !== id ? open(id) : close();
   }
 
   return (
-    <button className="relative" onClick={handleClick}>
+    <button
+      className="p-1 rounded-sm hover:bg-gray-200 dark:hover:bg-neutral-800/70"
+      onClick={handleClick}
+    >
       {children}
     </button>
   );
 };
 
 export const MenuList = ({ id, children, positionY = 8, positionX = 0 }) => {
-  console.log(positionX, positionY);
   const context = React.useContext(MenuContext);
   const ref = useOutsideClick(() => {
     if (context) {
       context.close();
     }
-  }, true);
+  }, false);
   if (!context) return null;
   const { openId } = context;
 
