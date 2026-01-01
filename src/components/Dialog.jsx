@@ -1,10 +1,11 @@
 import FocusLock from 'react-focus-lock';
+import {X} from "lucide-react"
 
-const Dialog = ({onCloseModal}) => {
+const Dialog = ({onCloseModal, children}) => {
   return (
     <FocusLock>
-    <div className='fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-lg flex flex-col gap-4 bg-white text-indigo-950 font-medium rounded-2xl shadow-lg p-6 max-sm:w-full'>
-        <div className='flex flex-col gap-2 text-start'>
+    <div className='fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-lg flex flex-col justify-center items-center max-sm:w-full'>
+        {/* <div className='flex flex-col gap-2 text-start'>
             <h2 className='text-lg leading-none font-semibold'>Add New</h2>
             <p className='text-sm text-zinc-400'>Create new user here. Click save when you're done.</p>
         </div>
@@ -25,9 +26,10 @@ const Dialog = ({onCloseModal}) => {
 
         <div className='w-full'>
             <button className='cursor-pointer block w-full px-4 py-2 bg-zinc-950 text-white rounded-md hover:bg-zinc-950/90'>Save Change</button>
-        </div>
+        </div> */}
+        {children}
 
-        <button onClick={() => onCloseModal?.()} className='cursor-pointer absolute top-4 right-4 text-zinc-500 hover:text-zinc-700'>✕</button>
+        <button onClick={() => onCloseModal?.()} className='bg-stone-50 dark:bg-stone-950 p-1 cursor-pointer absolute top-0 right-0 text-zinc-500 dark:text-stone-50 hover:text-zinc-700'><X size={24} strokeWidth={2}/></button>
     </div>
     </FocusLock>
   )
