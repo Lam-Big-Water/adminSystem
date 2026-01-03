@@ -1,5 +1,5 @@
 import React from 'react'
-import BookingTable from '../BookingTable'
+import BookingTable from '../components/BookingTable'
 import BookingTableOperations from '../BookingTableOperations'
 import Pagination from "../Pagination";
 import { useBookings } from "../query/bookings/useBookings";
