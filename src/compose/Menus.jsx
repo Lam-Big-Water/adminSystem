@@ -23,9 +23,7 @@ export const Menus = ({ children }) => {
 
 export const Toggle = ({
   id,
-  text,
-  icon,
-  styles,
+  children,
   positionY = 8,
   positionX = 0,
 }) => {
@@ -46,11 +44,8 @@ export const Toggle = ({
   }
 
   return (
-    <button className={styles} onClick={handleClick}>
-      <div className="flex gap-2 justify-center items-center">
-        {icon && <span className="text-sm">{icon}</span>}
-        {text && <span className="text-sm">{text}</span>}
-      </div>
+    <button className="p-1 rounded-sm hover:bg-primary/10" onClick={handleClick}>
+      {children}
     </button>
   );
 };
@@ -63,14 +58,14 @@ export const List = ({ id, children }) => {
 
   return createPortal(
     <FocusLock>
-      <div className="w-full h-full fixed inset-0 z-130">
-        <ul
-          className="select-none flex flex-col justify-start items-start gap-1 p-1 bg-[var(--color-bg)] border-[1px] border-[var(--color-border)] fixed z-120 rounded-md"
-          ref={ref}
-          style={{
+      <div className="fixed z-50" style={{
             right: position?.x,
             top: position?.y,
-          }}
+          }}>
+        <ul
+          className="overflow-hidden font-medium select-none flex flex-col justify-start items-start gap-1 bg-background p-1 border border-border rounded-md"
+          ref={ref}
+          
         >
           {children}
         </ul>
@@ -80,7 +75,7 @@ export const List = ({ id, children }) => {
   );
 };
 
-export const Button = ({ styles, children, icon, onClick }) => {
+export const Button = ({ children, onClick }) => {
   const { close } = useContext(MenuContext);
 
   function handleClick() {
@@ -89,13 +84,12 @@ export const Button = ({ styles, children, icon, onClick }) => {
   }
 
   return (
-    <li className="w-full overflow-hidden text-sm text-[var(--text-primary)] font-normal rounded-lg transition-colors">
+    <li className="last:border-b-0 w-full text-foreground text-sm border-b border-border">
       <button
-        className={`w-full h-full flex justify-start items-center cursor-pointer p-2 pr-8 gap-2 hover:bg-[var(--hover-highlight)] ${styles}`}
+        className="cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-gray-200 dark:hover:bg-neutral-800/70 rounded-sm"
         onClick={handleClick}
       >
-        {icon && <span className="text-base">{icon}</span>}
-        {children && <span className="">{children}</span>}
+        {children}
       </button>
     </li>
   );

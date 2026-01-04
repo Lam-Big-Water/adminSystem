@@ -1,4 +1,12 @@
-import { ArrowUpDown, ArrowUp, ArrowDown, EllipsisVertical, Eye, BadgeCheck, Trash } from "lucide-react";
+import {
+  ArrowUpDown,
+  ArrowUp,
+  ArrowDown,
+  EllipsisVertical,
+  Eye,
+  BadgeCheck,
+  Trash,
+} from "lucide-react";
 import React from "react";
 import { useBookings } from "../query/bookings/useBookings2";
 import { formatCurrency, formatDistanceFromNow } from "../utils/helpers";
@@ -10,7 +18,6 @@ import { useDeleteBooking } from "../query/bookings/useDeleteBooking";
 import { useNavigate } from "react-router-dom";
 import { useCheckout } from "../query/bookings/useCheckout";
 import ConfirmDelete from "../ConfirmDelete";
-
 
 const BookingTable = () => {
   const { data, isPending } = useBookings();
@@ -79,16 +86,6 @@ const BookingTable = () => {
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight text-foreground mb-2">
-            Team Members
-          </h1>
-          <p className="text-muted-foreground">
-            Manage your team members and their roles. Click column headers to
-            sort.
-          </p>
-        </div>
-
         <div className="rounded-lg border border-border bg-card shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -167,7 +164,7 @@ const BookingTable = () => {
                     <td className="px-6 py-4 text-sm text-muted-foreground">
                       {item.guestEmail}
                     </td>
-                    <td className="flex flex-col px-6 py-4 text-sm text-foreground">
+                    <td className="flex flex-col px-6 py-4 max-h-9 text-nowrap text-sm text-foreground">
                       <span>
                         {isToday(new Date(item.startDate))
                           ? "Today"
@@ -179,7 +176,7 @@ const BookingTable = () => {
                         &mdash; {format(new Date(item.endDate), "MMM dd yyyy")}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 text-nowrap">
                       <span
                         className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
                       >
@@ -197,54 +194,50 @@ const BookingTable = () => {
                       <Modal>
                         <Menus>
                           <div className="">
-                            <Toggle
-                              styles="flex justify-center w-6 hover:bg-[var(--color-block)] cursor-pointer rounded-sm"
-                              icon={
-                                <EllipsisVertical />
-                              }
-                              className="text-xl ml-auto"
-                              id={"order"}
-                              positionY={10}
-                              positionX={10}
-                            />
+                            <Toggle id={"order"} positionY={10} positionX={10}>
+                              <EllipsisVertical />
+                            </Toggle>
 
                             <List id={"order"}>
                               <Button
-                                onClick={() =>
-                                  navigate(`/bookings/${item.id}`)
-                                }
-                                icon={<Eye />}
+                                onClick={() => navigate(`/bookings/${item.id}`)}
                               >
-                                See details
+                                <div className="flex gap-2 items-center">
+                                  <Eye size={18} strokeWidth={1.5} />
+                                  <span>See details</span>
+                                </div>
                               </Button>
                               {status === "unconfirmed" && (
                                 <Button
                                   onClick={() =>
                                     navigate(`/checkin/${item.id}`)
                                   }
-                                  icon={
-                                    <BadgeCheck />
-                                  }
                                 >
-                                  Check in
+                                  <div className="flex gap-2 items-center">
+                                    <BadgeCheck size={18} strokeWidth={1.5} />
+                                    <span>Check in</span>
+                                  </div>
                                 </Button>
                               )}
 
                               {status === "checked-in" && (
                                 <Button
                                   onClick={() => checkout(item.id)}
-                                  icon={
-                                    <BadgeCheck />
-                                  }
                                   disabled={isCheckingOut}
                                 >
-                                  Check out
+                                  <div className="flex gap-2 items-center">
+                                    <BadgeCheck size={18} strokeWidth={1.5} />
+                                    <span>Check out</span>
+                                  </div>
                                 </Button>
                               )}
 
                               <ModalOpen opens="delete">
-                                <Button icon={<Trash />}>
-                                  Delete
+                                <Button>
+                                  <div className="flex gap-2 items-center">
+                                    <Trash size={18} strokeWidth={1.5} />
+                                    <span>Delete</span>
+                                  </div>
                                 </Button>
                               </ModalOpen>
                             </List>

@@ -2,22 +2,21 @@ import React from "react";
 import CreateForm from "./CreateForm";
 import ConfirmDelete from "./ConfirmDelete";
 // import ImgExpand from "./ImgExpand";
-import ImgExpand from "./components/ImagePreview"; 
+import ImgExpand from "./components/ImagePreview";
 // import { Modal, ModalOpen, ModalWindow } from "./compose/Modal";
 import { Modal, Open, Window } from "./compose/Modal2";
 
 import PrintPreview from "./PrintPreview";
 import { Menus, Toggle, List, Button } from "./compose/Menus";
 
-
 import { FaRegImage } from "react-icons/fa";
-import { HiOutlinePencilSquare, HiOutlineSquare2Stack, HiOutlineTrash, HiEllipsisVertical } from "react-icons/hi2";
 
 import { formatDate } from "./utils/formatDate";
 import Dialog from "./components/Dialog";
 
-const Row = ({ cabin}) => {
+import { EllipsisVertical, Printer, SquarePen, Trash } from "lucide-react";
 
+const Row = ({ cabin }) => {
   const {
     id: cabinId,
     created_at,
@@ -32,7 +31,9 @@ const Row = ({ cabin}) => {
   const popUrl = image.split("/").pop();
   return (
     <>
-      <tr className={`h-fit border-t-[1.4px] border-[var(--color-border)] bg-[var(--color-bg)] hover:bg-[var(--color-block-hover)]`}>
+      <tr
+        className={`h-fit border-t-[1.4px] border-[var(--color-border)] bg-[var(--color-bg)] hover:bg-[var(--color-block-hover)]`}
+      >
         <td className="sticky top-0 left-0 z-30 m-0 p-0 leading-[1]">
           <Modal>
             <Open id="expand">
@@ -66,31 +67,43 @@ const Row = ({ cabin}) => {
         <td className="px-6 py-4">{discount}</td>
         <td className="px-6 py-4">
           <Modal>
-
             <Menus>
-
-              <Toggle id={cabinId} styles="flex justify-center w-7 p-1 hover:bg-[var(--color-block)] cursor-pointer rounded-sm"
-                icon={<HiEllipsisVertical className="text-[1.3rem]"/>} />
+              <Toggle id={cabinId}>
+                <EllipsisVertical />
+              </Toggle>
 
               <List id={cabinId}>
-
                 {/* ModalOpen 触发器仍然在列表里 */}
                 <Open id="pagePrint">
-                  <Button icon={<HiOutlineSquare2Stack className="text-lg" />}>Print</Button>
+                  <Button>
+                    <div className="flex gap-2 items-center">
+                      <Printer size={18} strokeWidth={1.5} />
+                      <span>Print</span>
+                    </div>
+                  </Button>
                 </Open>
 
-          
                 <Open id="update">
-                  <Button icon={<HiOutlinePencilSquare className="text-lg" />}>Edit</Button>
+                  <Button>
+                    <div className="flex gap-2 items-center">
+                      <SquarePen size={18} strokeWidth={1.5} />
+                      <span>Edit</span>
+                    </div>
+                  </Button>
                 </Open>
 
                 <Open id="delete">
-                  <Button icon={<HiOutlineTrash className="text-lg" />}>Delete</Button>
+                  <Button>
+                    <div className="flex gap-2 items-center">
+                      <Trash size={18} strokeWidth={1.5} />
+                      <span>Delete</span>
+                    </div>
+                  </Button>
                 </Open>
               </List>
 
               {/* ModalWindow 移到了列表外面，不再受列表关闭的影响 */}
-              
+
               <Window id="pagePrint">
                 <PrintPreview data={cabin} />
               </Window>
