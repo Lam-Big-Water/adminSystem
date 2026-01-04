@@ -18,8 +18,11 @@ import { useDeleteBooking } from "../query/bookings/useDeleteBooking";
 import { useNavigate } from "react-router-dom";
 import { useCheckout } from "../query/bookings/useCheckout";
 import ConfirmDelete from "../ConfirmDelete";
+import Pagination from "../components/Pagination";
+
 
 const BookingTable = () => {
+  
   const { data, isPending } = useBookings();
   const { bookings, count } = data || {};
   const navigate = useNavigate();
@@ -259,9 +262,8 @@ const BookingTable = () => {
           </div>
         </div>
 
-        <div className="mt-4 text-sm text-muted-foreground">
-          Showing {count} team members
-        </div>
+              <Pagination count={count}/>
+
       </div>
     </div>
   );
