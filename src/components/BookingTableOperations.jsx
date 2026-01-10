@@ -1,13 +1,15 @@
 import React from "react";
 import Filter from "./Filter";
+import SearchBar from "./SearchBar";
 
 const BookingTableOperations = () => {
   return (
     <div className="flex gap-2 items-center">
-      <input
+      {/* <input
         type="text"
         className="w-full max-w-32 h-8 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-zinc-400 max-sm:w-full"
-      />
+      /> */}
+      <SearchBar />
       <Filter
         filterField="Status"
         options={[
