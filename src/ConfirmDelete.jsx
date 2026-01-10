@@ -1,21 +1,5 @@
-import { useDelete } from "./query/cabins/useDelete";
 import FocusLock from "react-focus-lock";
-const ConfirmDelete = ({
-  onCloseModal,
-  id,
-  deleteUrl,
-}) => {
-  const { deleteData, isDeleting } = useDelete();
-  function handleDelete() {
-    deleteData(
-      { id, deleteUrl },
-      {
-        onSuccess: () => {
-          onCloseModal?.();
-        },
-      }
-    );
-  }
+const ConfirmDelete = ({ resourceName, onConfirm, disabled, onCloseModal }) => {
 
   return (
     <div
@@ -24,23 +8,24 @@ const ConfirmDelete = ({
       <FocusLock>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col text-start">
-            <h2 className="text-lg pb-2 text-slate-950 dark:text-slate-200">Delete this item: {id} ?</h2>
+            <h2 className="text-lg pb-2 text-slate-950 dark:text-slate-200">Delete this item: {resourceName} ?</h2>
             <p className="text-sm text-gray-500">
-              You are about to delete a task with the ID <span className="underline text-base font-black text-gray-700 dark:text-stone-50">{id}</span>
+              You are about to delete a task with the ID <span className="underline text-base font-black text-gray-700 dark:text-stone-50">{resourceName}</span>
             </p>
             <p className="text-sm text-gray-500">This action cannot be undone.</p>
           </div>
           <div className="flex justify-end gap-4">
             <button
-              onClick={() => onCloseModal?.()}
+              disabled={disabled}
+              onClick={onCloseModal}
               className="text-slate-950 dark:text-slate-200 bg-stone-50 dark:bg-stone-950 text-sm cursor-pointer hover:bg-gray-200 dark:hover:bg-neutral-800/70 border border-stone-200 dark:border-stone-900
  rounded-md py-2 px-4 transition-colors duration-200"
             >
               Cancel
             </button>
             <button
-              disabled={isDeleting}
-              onClick={handleDelete}
+              disabled={disabled}
+              onClick={onConfirm}
               className="text-sm text-stone-50 bg-red-600 cursor-pointer hover:bg-red-500 border border-stone-200 dark:border-stone-900
  rounded-md py-2 px-4 transition-colors duration-200"
             >

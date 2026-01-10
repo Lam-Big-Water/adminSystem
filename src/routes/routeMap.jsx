@@ -12,7 +12,7 @@ import PageNotFound from '../pages/pageNotFound';
 import Account from "../Account";
 import Booking from "../pages/booking";
 import Checkin from "../pages/checkin";
-
+import BookingDetail from "../components/BookingDetail";
 
 
 export const routeMap = ([
@@ -38,7 +38,9 @@ export const routeMap = ([
         },
         {
           path: "bookings/:bookingId",
-          element: < Booking/>
+          element: <BookingDetail/>
+          // element: <Booking/>
+
         },
         {
           path: "checkin/:bookingId",
