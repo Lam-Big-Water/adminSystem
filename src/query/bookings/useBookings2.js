@@ -29,5 +29,21 @@ export function useBookings() {
     }),
   });
 
+  // PRE-FETCHING
+  // After the data arrives, the count is recalculated, and at this point, data.count is 2, not 0.
+  const pageCount = Math.ceil((data?.count || 0) / PAGE_SIZE);
+
+  if (page < pageCount)
+    queryClient.prefetchQuery({
+      queryKey: ["bookings2", filter, page + 1],
+      queryFn: () => getBookings({filter, page: page + 1})
+    })
+
+    if (page > 1)
+    queryClient.prefetchQuery({
+      queryKey: ["bookings2", filter, page - 1],
+      queryFn: () => getBookings({filter, page: page - 1})
+    })
+
   return {isPending, data}
 }

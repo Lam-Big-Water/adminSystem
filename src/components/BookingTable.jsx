@@ -8,7 +8,7 @@ import {
   Trash,
 } from "lucide-react";
 import React from "react";
-import { useBookings } from "../query/bookings/useBookings2";
+import { useBookings } from "../query/bookings/useBookings3";
 import { formatCurrency, formatDistanceFromNow } from "../utils/helpers";
 import { format, isToday } from "date-fns";
 import TableSkeleton from "../TableSkeleton";
@@ -20,10 +20,9 @@ import { useCheckout } from "../query/bookings/useCheckout";
 import ConfirmDelete from "../ConfirmDelete";
 import Pagination from "../components/Pagination";
 
-
 const BookingTable = () => {
-  
   const { data, isPending } = useBookings();
+  console.log(data);
   const { bookings, count } = data || {};
   const navigate = useNavigate();
   const { deleteBooking, isDeleting } = useDeleteBooking();
@@ -87,7 +86,7 @@ const BookingTable = () => {
     );
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
+    <div className="h-screen bg-background pt-4">
       <div className="mx-auto max-w-7xl">
         <div className="rounded-lg border border-border bg-card shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
@@ -167,7 +166,7 @@ const BookingTable = () => {
                     <td className="px-6 py-4 text-sm text-muted-foreground">
                       {item.guestEmail}
                     </td>
-                    <td className="flex flex-col px-6 py-4 max-h-9 text-nowrap text-sm text-foreground">
+                    <td className="h-9 text-nowrap flex flex-col px-6 py-4 text-sm text-foreground">
                       <span>
                         {isToday(new Date(item.startDate))
                           ? "Today"
@@ -179,7 +178,7 @@ const BookingTable = () => {
                         &mdash; {format(new Date(item.endDate), "MMM dd yyyy")}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-nowrap">
+                    <td className="px-6 py-4 h-9 text-nowrap">
                       <span
                         className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
                       >
@@ -260,10 +259,8 @@ const BookingTable = () => {
               </tbody>
             </table>
           </div>
+          <Pagination count={count} />
         </div>
-
-              <Pagination count={count}/>
-
       </div>
     </div>
   );

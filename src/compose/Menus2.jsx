@@ -29,12 +29,12 @@ export const Toggle = ({ id, children }) => {
   }
 
   return (
-    <button
-      className="p-1 rounded-sm hover:bg-primary/10"
+    <div
+      
       onClick={handleClick}
     >
       {children}
-    </button>
+    </div>
   );
 };
 
@@ -85,7 +85,7 @@ export const MenusButton = ({ children, onClick }) => {
      bg-stone-50 dark:bg-stone-950 border-b border-stone-200 dark:border-stone-900"
     >
       <button
-        className="cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-gray-200 dark:hover:bg-neutral-800/70"
+        className="text-left rounded-sm cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-gray-200 dark:hover:bg-neutral-800/70"
         onClick={handleClick}
       >
         {children}

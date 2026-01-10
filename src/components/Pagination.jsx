@@ -1,5 +1,10 @@
 import React from "react";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from "lucide-react";
 
 import { PAGE_SIZE } from "../utils/constants";
 
@@ -7,7 +12,7 @@ import { useSearchParams } from "react-router-dom";
 
 const Pagination = ({ count = 45 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams)
+  console.log(searchParams);
   const currentPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
@@ -42,7 +47,7 @@ const Pagination = ({ count = 45 }) => {
     setSearchParams(searchParams);
   }
 
-    function PageByNum(page) {
+  function PageByNum(page) {
     searchParams.set("page", page);
     setSearchParams(searchParams);
   }
@@ -82,75 +87,74 @@ const Pagination = ({ count = 45 }) => {
     return pages;
   };
 
-  console.log(getPageNumbers())
-
   return (
-    <div>
-      <div className="flex items-center justify-between border-t border-border/50 px-6 py-4">
-        <div className="text-sm text-muted-foreground">
-                Showing <span className="font-medium text-foreground">{startIndex + 1}</span> to{" "}
-                <span className="font-medium text-foreground">{Math.min(endIndex, count)}</span> of{" "}
-                <span className="font-medium text-foreground">{count}</span> results
-              </div>
+    <div className="flex items-center justify-between border-t border-border/50 px-6 py-4">
+      <div className="text-sm text-muted-foreground">
+        Showing{" "}
+        <span className="font-medium text-foreground">{startIndex + 1}</span> to{" "}
+        <span className="font-medium text-foreground">
+          {Math.min(endIndex, count)}
+        </span>{" "}
+        of <span className="font-medium text-foreground">{count}</span> results
+      </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            disabled={currentPage === 1}
-            onClick={firstPage}
-            className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
-          >
-            <ChevronsLeft className="h-4 w-4" />
-            <span className="sr-only">First page</span>
-          </button>
+      <div className="flex items-center gap-2">
+        <button
+          disabled={currentPage === 1}
+          onClick={firstPage}
+          className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
+        >
+          <ChevronsLeft className="h-4 w-4" />
+          
+        </button>
 
-          <button
-            disabled={currentPage === 1}
-            onClick={prevPage}
-            className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            <span className="sr-only">Previous page</span>
-          </button>
+        <button
+          disabled={currentPage === 1}
+          onClick={prevPage}
+          className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          
+        </button>
 
-          <div className="flex items-center gap-1">
-            {getPageNumbers().map((page, index) =>
-              typeof page === "number" ? (
-                <button
-                  key={page}
-                  onClick={() => PageByNum(page)}
-                  className={`w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md ${currentPage === page ? "bg-accent-foreground text-accent" : ""}`}
-                >
-                  {page}
-                </button>
-              ) : (
-                <span
-                  className="px-2 text-muted-foreground"
-                  key={`ellipsis-${index}`}
-                >
-                  {page}
-                </span>
-              )
-            )}
-          </div>
-
-          <button
-            disabled={currentPage === pageCount}
-            onClick={nextPage}
-            className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
-          >
-            <ChevronRight className="h-4 w-4" />
-            <span className="sr-only">Next page</span>
-          </button>
-
-          <button
-            disabled={currentPage === pageCount}
-            onClick={lastPage}
-            className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
-          >
-            <ChevronsRight className="h-4 w-4" />
-            <span className="sr-only">Last page</span>
-          </button>
+        <div className="flex items-center gap-1">
+          {getPageNumbers().map((page, index) =>
+            typeof page === "number" ? (
+              <button
+                key={page}
+                onClick={() => PageByNum(page)}
+                className={`w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md ${currentPage === page ? "bg-accent-foreground text-accent" : ""}`}
+              >
+                {page}
+              </button>
+            ) : (
+              <span
+                className="px-2 text-muted-foreground"
+                key={`ellipsis-${index}`}
+              >
+                {page}
+              </span>
+            )
+          )}
         </div>
+
+        <button
+          disabled={currentPage === pageCount}
+          onClick={nextPage}
+          className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
+        >
+          <ChevronRight className="h-4 w-4" />
+          
+        </button>
+
+        <button
+          disabled={currentPage === pageCount}
+          onClick={lastPage}
+          className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
+        >
+          <ChevronsRight className="h-4 w-4" />
+          
+        </button>
       </div>
     </div>
   );
