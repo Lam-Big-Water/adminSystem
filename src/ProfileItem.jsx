@@ -6,7 +6,7 @@ const ProfileItem = ({children}) => {
   const { fullName = "SamLam", avatar = "default-user.jpg" } = user?.user_metadata || {};
 
   return (
-    <div className="flex items-center gap-2 p-2 rounded-md">
+    <div className="flex items-center gap-2 p-2 border-b border-border">
       <img
         className="w-10 h-10 rounded-lg"
         src={avatar}

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [react()],  // 移除 tailwindcss()
+  plugins: [react()],  // Remove tailwindcss()
   build: {
     outDir: 'dist',
   },
