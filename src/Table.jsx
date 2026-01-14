@@ -3,9 +3,7 @@ import { useGetCabinsByOpt } from "./query/cabins/useGet";
 import Row from "./Row";
 import TableSkeleton from "./TableSkeleton";
 import Pagination from "./Pagination";
-import AddCabin from "./AddCabin";
-import Filter from "./Filter";
-import TableCaption from "./components/TableCaption";
+
 import { ArrowUp, ArrowDown, ArrowUpDown } from "lucide-react";
 
 const Table = () => {
@@ -73,20 +71,8 @@ const sortedData = React.useMemo(() => {
 
   return (
     <>
-      <div className="flex justify-between items-center">
-        <AddCabin />
-        <Filter
-          filterField="discount"
-          options={[
-            { value: "all", label: "All" },
-            { value: "no-discount", label: "No discount" },
-            { value: "with-discount", label: "With discount" },
-          ]}
-        />
-      </div>
-      <div>
-        <TableCaption />
-      </div>
+
+
       <div className="min-h-full mt-6 overflow-x-hidden">
         <div className="overflow-y-auto w-full rounded-2xl border-[1.4px] border-[var(--color-border)]">
           <table className="w-full whitespace-nowrap text-left text-sm font-normal text-[var(--text-primary)] border-collapse border-spacing-0">

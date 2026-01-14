@@ -25,13 +25,14 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="mx-auto w-full flex flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8 text-black dark:text-amber-50">
+    <div className="container grid h-svh max-w-none items-center justify-center">
+    <div class="mx-auto flex w-full flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8 bg-background text-foreground">
       <h1 className="flex justify-center items-center text-xl font-semibold mb-4">
         ❖ Admin Dashboard
       </h1>
       <form
         onSubmit={handleSubmit}
-        className="w-full flex flex-col gap-4 p-6 shadow-sm rounded-xl border border-neutral-300 dark:border-zinc-700"
+        className="w-full flex flex-col gap-4 p-6 shadow-sm rounded-xl border"
       >
         <div>
           <h2 className="text-lg font-semibold">Sign in</h2>
@@ -103,6 +104,7 @@ const LoginForm = () => {
           )}
         </button>
       </form>
+    </div>
     </div>
   );
 };

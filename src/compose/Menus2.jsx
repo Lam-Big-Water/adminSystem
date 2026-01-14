@@ -59,8 +59,7 @@ export const MenuList = ({ id, children, positionY = 8, positionX = 0 }) => {
       className="fixed z-50"
     >
       <ul
-        className="overflow-hidden last:border-b-0 font-medium bg-white text-slate-950 dark:bg-black dark:text-white border border-stone-200 dark:border-stone-900
- rounded-lg text-sm"
+        className="overflow-hidden rounded-lg text-sm bg-background text-foreground border border-border"
         ref={ref}
       >
         {children}
@@ -81,11 +80,10 @@ export const MenusButton = ({ children, onClick }) => {
   }
   return (
     <li
-      className="text-slate-950 dark:text-slate-200
-     bg-stone-50 dark:bg-stone-950 border-b border-stone-200 dark:border-stone-900"
+      className="text-foreground bg-background"
     >
       <button
-        className="text-left rounded-sm cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-gray-200 dark:hover:bg-neutral-800/70"
+        className="text-left rounded-sm cursor-pointer w-full p-1"
         onClick={handleClick}
       >
         {children}

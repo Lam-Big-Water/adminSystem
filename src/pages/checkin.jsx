@@ -6,6 +6,7 @@ import { useBooking } from "../query/bookings/useBooking";
 import { useSettings } from "../query/settings/useSettings";
 import { formatCurrency, formatDistanceFromNow } from "../utils/helpers";
 import { useMoveBack } from "../hooks/useMoveBack";
+import Spinner from "../Spinner";
 
 const checkin = () => {
   const { booking, isPending } = useBooking();
@@ -17,7 +18,7 @@ const checkin = () => {
 
   useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking]);
 
-  if (isPending || isPendingSettings) return <h1>Loading...</h1>;
+  if (isPending || isPendingSettings) return <Spinner />
 
   const {
     id: bookingId,
