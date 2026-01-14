@@ -1,5 +1,6 @@
 import React from "react";
 import { useTodayActivity } from "./query/dashboard/useTodayActivity";
+import Spinner from "./Spinner";
 
 const testData = [
   {
@@ -78,7 +79,7 @@ const TodayActivity = () => {
           <h2>No activity today...</h2>
         )
       ) : (
-        <h2>Loading...</h2>
+        <Spinner />
       )}
       </div>
     </div>

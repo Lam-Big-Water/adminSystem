@@ -5,7 +5,7 @@ const SidebarItem = ({ expanded, icon, text, link }) => {
     <NavLink
       to={link}
       className={({ isActive }) =>
-        `relative flex items-center py-2 px-3 my-1 text-sm font-medium rounded-md cursor-pointer transition-colors group 
+        `relative flex items-center p-2 my-1 text-sm font-medium rounded-md cursor-pointer transition-colors group 
         ${isActive ? "bg-primary/10" : "hover:bg-primary/10"}
         ${expanded ? "justify-start" : "justify-center"}`
       }
@@ -18,7 +18,7 @@ const SidebarItem = ({ expanded, icon, text, link }) => {
           </div>
           
           <span
-            className={`overflow-hidden transition-all ${
+            className={`overflow-hidden transition-all ease-linear duration-300 ${
               expanded ? "w-32 ml-3" : "w-0"
             } ${isActive ? "font-bold" : ""}`}
           >

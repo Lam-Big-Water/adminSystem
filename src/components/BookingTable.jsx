@@ -87,7 +87,7 @@ const BookingTable = () => {
 
   return (
     <div className="h-screen bg-background pt-4">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto">
         <div className="rounded-lg border border-border bg-card shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">

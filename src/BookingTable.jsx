@@ -19,11 +19,12 @@ import {
 } from "react-icons/hi2";
 
 import ConfirmDelete from "./ConfirmDelete";
+import Spinner from "./Spinner";
 
 const BookingTable = () => {
   const { bookings, isPending } = useBookings();
 
-  if (isPending) return <h1>Loading...</h1>;
+  if (isPending) return <Spinner />
 
   if (!bookings.length) return <h1>Empty...</h1>;
   return (
