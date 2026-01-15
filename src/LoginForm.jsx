@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLogin } from "./query/auth/useLogin";
-import SpinnerMini from "./SpinnerMini";
+import SpinnerMini from "@/SpinnerMini";
 import { LogIn, EyeOff, Eye } from "lucide-react";
 
 const LoginForm = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "../Table";
-import Filter from "../Filter";
+import Filter from "@/Filter";
 import TableCaption from "../components/TableCaption";
 
 const cabin = () => {
