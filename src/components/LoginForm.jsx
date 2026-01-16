@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import { useLogin } from "./query/auth/useLogin";
+import { useLogin } from "../query/auth/useLogin";
 import SpinnerMini from "@/SpinnerMini";
-import { LogIn, EyeOff, Eye } from "lucide-react";
+import { LogIn, EyeOff, Eye, GamepadDirectional } from "lucide-react";
+import FormField from "@/FormField";
+import FormFieldPassword from "@components/FormFieldPassword";
+import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("samlam@showcase.com");
   const [password, setPassword] = useState("123123123");
-  const [eye, setEye] = useState(false);
   const { login, isPending } = useLogin();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!email || !password) return;
+  const { register, handleSubmit, formState } = useForm();
 
+  const { errors } = formState;
+
+  const onSubmit = () => {
     login(
       { email, password },
       {
@@ -22,28 +25,77 @@ const LoginForm = () => {
         },
       }
     );
-  }
+  };
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   if (!email || !password) return;
+
+  //   login(
+  //     { email, password },
+  //     {
+  //       onSettled: () => {
+  //         setEmail("");
+  //         setPassword("");
+  //       },
+  //     }
+  //   );
+  // }
 
   return (
-    <div className="container grid h-svh max-w-none items-center justify-center">
-    <div class="mx-auto flex w-full flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8 bg-background text-foreground">
-      <h1 className="flex justify-center items-center text-xl font-semibold mb-4">
-        ❖ Admin Dashboard
-      </h1>
+    <div class="mx-auto flex w-full flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8 bg-background text-foreground font-medium">
+      <div className="flex justify-center items-center text-xl font-semibold mb-4 gap-1">
+        <GamepadDirectional size={28} strokeWidth={2} />
+        <h1 className="text-xl font-medium">Admin Dashboard</h1>
+      </div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col gap-4 p-6 shadow-sm rounded-xl border"
       >
         <div>
           <h2 className="text-lg font-semibold">Sign in</h2>
-          <span className="text-neutral-500 dark:text-stone-400 text-sm font-medium">
+          <span className="text-sm text-muted-foreground">
             Enter your email and password below to
             <br />
             log into your account
           </span>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <FormField
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeHolder="name@example.com"
+          label="Email"
+          id="email"
+          register={register}
+          errors={errors}
+          validationRules={{
+            required: "Please enter your email",
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "Please enter a valid email",
+            },
+          }}
+        />
+        <FormFieldPassword
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeHolder="********"
+          label="Password"
+          id="password"
+          register={register}
+          errors={errors}
+          validationRules={{
+            required: "This password is required!",
+            minLength: {
+              value: 6,
+              message: "Password must be at least 6 characters long",
+            },
+          }}
+        />
+
+        {/* <div className="flex flex-col gap-2">
           <label
             htmlFor="email"
             className="text-sm leading-none font-medium select-none"
@@ -58,9 +110,9 @@ const LoginForm = () => {
             className="h-9 w-full min-w-0 placeholder:text-zinc-400 rounded-md border border-zinc-700 px-3 py-1 text-base shadow-xs transition-[color,box-shadow]"
             type="email"
           />
-        </div>
+        </div> */}
 
-        <div className="flex flex-col gap-2">
+        {/* <div className="flex flex-col gap-2">
           <div className="flex items-center">
             <label
               htmlFor="password"
@@ -89,11 +141,11 @@ const LoginForm = () => {
               {eye ? <Eye size="20px" /> : <EyeOff size="20px" />}
             </button>
           </div>
-        </div>
+        </div> */}
 
         <button
           type="submit"
-          className="h-9 px-4 py-2 bg-black text-amber-50 dark:bg-amber-50 dark:text-black inline-flex items-center justify-center whitespace-normal rounded-md text-sm font-medium transition-all cursor-pointer disabled:pointer-events-none disabled:opacity-50 hover:bg-black/80 dark:hover:bg-amber-50/90"
+          className="h-9 px-4 py-2 bg-primary text-primary-foreground inline-flex items-center justify-center whitespace-normal rounded-md text-sm transition-color duration-100 cursor-pointer disabled:pointer-events-none hover:bg-primary/90 border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
         >
           {isPending ? (
             <SpinnerMini />
@@ -104,7 +156,6 @@ const LoginForm = () => {
           )}
         </button>
       </form>
-    </div>
     </div>
   );
 };

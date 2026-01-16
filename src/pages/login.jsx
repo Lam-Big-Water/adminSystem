@@ -1,9 +1,9 @@
 import React from 'react'
-import LoginForm from '../LoginForm'
+import LoginForm from '@components/LoginForm';
 
 const login = () => {
   return (
-    <div className='w-full h-full flex justify-center items-center'>
+    <div className="container grid h-svh max-w-none items-center sm:justify-center">
         <LoginForm />
     </div>
   )
