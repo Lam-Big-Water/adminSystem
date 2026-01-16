@@ -172,3 +172,53 @@ text-slate-950 dark:text-slate-200
 border-stone-200 dark:border-stone-900
 
 hover:bg-gray-200 dark:hover:bg-neutral-800/70
+
+
+# Vite Environment Variables
+
+```env
+.env                # Base (all environments)
+.env.local          # Local overrides (gitignored)
+.env.[mode]         # Stage-specific (e.g., .env.development)
+.env.[mode].local   # Stage-specific local overrides
+
+
+import.meta.env.MODE      // 'development', 'production'
+import.meta.env.DEV       // boolean (true in dev)
+import.meta.env.PROD      // boolean (true in prod)
+import.meta.env.BASE_URL  // from vite.config.js base option
+
+
+# .env.development
+VITE_API_URL=http://localhost:3000
+VITE_DEBUG=true
+
+# .env.production  
+VITE_API_URL=https://api.example.com
+VITE_DEBUG=false
+
+
+// Access in code
+const apiUrl = import.meta.env.VITE_API_URL
+const isDebug = import.meta.env.VITE_DEBUG
+
+
+Configuration Options
+
+// vite.config.js
+export default defineConfig({
+  envPrefix: ['VITE_', 'APP_'], // Custom prefixes
+  define: {
+    // Inject static values at build time
+    '__APP_VERSION__': JSON.stringify('1.0.0')
+  }
+})
+
+```
+
+# Vite Image & Media Asset Optimization Summary
+
+Advanced Optimization Plugins
+
+- vite-plugin-imagemin: Automatically compresses images and converts formats (e.g., to WebP/AVIF) during build.
+- vite-plugin-picture: (Emerging) Automates responsive image markup generation.
