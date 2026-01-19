@@ -6,9 +6,9 @@ import { useBooking } from "../query/bookings/useBooking";
 import { useSettings } from "../query/settings/useSettings";
 import { formatCurrency, formatDistanceFromNow } from "../utils/helpers";
 import { useMoveBack } from "../hooks/useMoveBack";
-import Spinner from "../Spinner";
+import Spinner from "@components/Spinner";
 
-const checkin = () => {
+const Checkin = () => {
   const { booking, isPending } = useBooking();
   const { settings, isPending: isPendingSettings } = useSettings();
   const [addBreakfast, setAddBreakfast] = useState(false);
@@ -167,4 +167,4 @@ const Checkbox = ({ checked, onChange, disabled = false, id, children }) => {
   );
 };
 
-export default checkin;
+export default Checkin;

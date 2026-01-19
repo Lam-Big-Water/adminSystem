@@ -9,8 +9,8 @@ import StatusBadge from "../StatusBadge";
 import { Modal, ModalOpen, ModalWindow } from "../compose/Modal";
 import ConfirmDelete from "../ConfirmDelete"
 import {useDeleteBooking} from "../query/bookings/useDeleteBooking"
-import Spinner from "../Spinner";
-const booking = () => {
+import Spinner from "@components/Spinner";
+const Booking = () => {
   const { booking, isPending } = useBooking();
   const { deleteBooking, isDeleting } = useDeleteBooking();
 
@@ -114,4 +114,4 @@ const booking = () => {
   );
 };
 
-export default booking;
+export default Booking;

@@ -34,9 +34,11 @@ const FormField = ({
           autoComplete={autoComplete}
           {...register(id, validationRules)}
           defaultValue={defaultValue}
-          className={`w-full min-h-26 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-zinc-400 max-sm:w-full ${
-            isError ? "border-red-500 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300" : "border-zinc-400 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-zinc-400"
-          }`}
+          className={`w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-muted-foreground max-sm:w-full ${
+          isError
+            ? "border-destructive focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300"
+            : "border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+        }`}
           {...props}
         />
       ) : (
@@ -46,9 +48,11 @@ const FormField = ({
           autoComplete={autoComplete}
           {...register(id, validationRules)}
           defaultValue={defaultValue}
-          className={`w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-zinc-400 max-sm:w-full ${
-            isError ? "border-red-500 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300" : "border-zinc-400 focus:outline-none focus-visible:ring-[3px] focus-visible:ring-zinc-400"
-          }`}
+          className={`w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-muted-foreground max-sm:w-full ${
+          isError
+            ? "border-destructive focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300"
+            : "border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
+        }`}
           {...props}
         />
         

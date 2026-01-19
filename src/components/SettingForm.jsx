@@ -1,9 +1,9 @@
 import React from "react";
 import { useSettings } from "../query/settings/useSettings";
 import { useUpdateSetting } from "../query/settings/useUpdateSetting";
-import Spinner from "../Spinner";
+import Spinner from "@components/Spinner";
 
-const settings = () => {
+const Settings = () => {
   const {
     isPending,
     settings: {
@@ -105,4 +105,4 @@ const settings = () => {
   );
 };
 
-export default settings;
+export default Settings;

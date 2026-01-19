@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
 
 // import Sidebar from "./Sidebar";
-import Sidebar from "./components/Sidebar"
+import Sidebar from "./components/Sidebar";
 
 const AppLayout = () => {
   // const [slide, setSlide] = React.useState(false);
@@ -11,14 +11,16 @@ const AppLayout = () => {
   // console.log(slide)
 
   return (
-    <div className="relative w-full h-screen">
-      <div className="flex gap-2 w-full overflow-y-hidden h-screen">
+    <div className="relative w-full min-h-svh">
+      <div className="flex gap-2 w-full overflow-y-hidden">
         <Sidebar />
         {/* <Sidebar slide={slide} handleSlide={handleSlide}/> */}
-        <div className="w-full m-auto overflow-auto h-screen px-4 py-6">
+        <div className="flex-1 flex flex-col w-full bg-background overflow-auto h-screen rounded-2xl shadow-sm">
           <Header />
           {/* <Header handleSlide={handleSlide}/> */}
-        <Outlet />
+          <div className="max-w-7xl w-full m-auto px-4 py-6">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

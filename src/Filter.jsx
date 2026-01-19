@@ -18,12 +18,12 @@ const Filter = ({filterField, options}) => {
         setSearchParams(newParams);
     }
   return (
-    <div className="flex gap-2 text-sm font-bold text-[var(--text-primary)] bg-[var(--color-block-hover)] rounded-lg p-1.5">
+    <div className="flex gap-2 text-sm font-medium bg-muted text-foreground rounded-lg p-1">
         {options.map((option) => (
             <button
             key={option.value}
             onClick={() => handleClick(option.value)}
-            className={`rounded-sm cursor-pointer py-1 px-1.5 ${option.value === currentFilter ? "text-[var(--text-primary)] bg-[var(--color-bg)] shadow-md" : "text-[var(--text-second)]"}`}
+            className={`rounded-md cursor-pointer py-1 px-1.5 hover:bg-card ${option.value === currentFilter ? "bg-card shadow-sm font-bold" : "text-muted-foreground"}`}
             >
                 {option.label}
             </button>
