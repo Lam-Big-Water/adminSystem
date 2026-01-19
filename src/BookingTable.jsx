@@ -19,7 +19,7 @@ import {
 } from "react-icons/hi2";
 
 import ConfirmDelete from "./ConfirmDelete";
-import Spinner from "./Spinner";
+import Spinner from "@/components/Spinner";
 
 const BookingTable = () => {
   const { bookings, isPending } = useBookings();

@@ -13,7 +13,7 @@ import { formatDistanceFromNow, formatCurrency } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import { useMoveBack } from "../hooks/useMoveBack";
 import { Modal, Open, Window } from "../compose/Modal2";
-import Spinner from "../Spinner";
+import Spinner from "@components/Spinner";
 import ConfirmDelete from "../ConfirmDelete"
 
 

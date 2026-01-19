@@ -40,9 +40,9 @@ const Sidebar = () => {
   useMobileDetection(setExpanded);
 
   return (
-    <>
+    <div className="col-start-1 col-end-2 row-span-2">
       <aside className="h-screen flex">
-        <nav className="h-full flex flex-col bg-sidebar text-foreground font-medium border-r border-border shadow-sm p-2">
+        <nav className="h-full flex flex-col bg-background text-foreground font-medium p-2">
           <div className="p-4 pb-2 flex justify-between items-center">
             <div
               className={`rounded-sm overflow-hidden transition-all ease-linear duration-300 ${
@@ -190,7 +190,7 @@ const Sidebar = () => {
         </nav>
       </aside>
       {/* <SliderSidebar toggle={slide} onClose={handleSlide}/> */}
-    </>
+    </div>
   );
 };
 
