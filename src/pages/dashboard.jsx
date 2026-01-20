@@ -9,6 +9,7 @@ import Spinner from "@components/Spinner";
 import Card from "@/components/Card";
 import { BellRing, CreditCard, UsersRound, ChartBarBig } from "lucide-react";
 import SimpleBarChart from "@components/SimpleBarChart";
+import Caption from "@/components/Caption";
 
 const Dashboard = () => {
   const { bookings, isPending: isPending1 } = useRecentBookings();
@@ -24,29 +25,25 @@ const Dashboard = () => {
     confirmedStays.reduce((acc, cur) => acc + cur.numNights, 0) /
     (numDays * cabins.length);
 
-  const bookingIncome = numBookings ? `+${numBookings}` : "Empty";
+  const bookingIncome = numBookings ? `+${numBookings}` : 0;
   const bookingRate = Math.round(numBookings * 0.1) + "%";
 
-  const saleIncome = sales ? `$${sales}` : "Empty";
+  const saleIncome = sales ? `$${sales}` : 0;
   const saleRate = Math.round(sales * 0.01) + "%";
 
-  const checkinIncome = checkins ? `+${checkins}` : "Empty";
+  const checkinIncome = checkins ? `+${checkins}` : 0;
   const checkinRate = Math.round(checkins * 0.01) + "%";
 
-  const occupationIncome = occupation ? `+${occupation.toFixed(2)}` : "Empty";
+  const occupationIncome = occupation ? `+${occupation.toFixed(2)}` : 0;
   const occupationRate = Math.round(occupation * 100) + "%";
 
   return (
-    <div>
-      <div className="py-4 flex justify-between font-medium">
-        <div className="flex flex-col gap-1">
-          <h1
-            className="text-2xl font-bold tracking-tight text-foreground"
-          >
-            Dashboard
-          </h1>
-        </div>
-      </div>
+    <div className="max-w-7xl w-full m-auto px-4 py-6">
+      <Caption title="Dashboard">
+        <button className="flex items-center gap-1 text-sm font-medium text-primary-foreground bg-primary  py-2 px-3 rounded-md hover:bg-primary/90 transition-colors duration-200">
+          Download
+        </button>
+      </Caption>
       <div className="flex justify-between">
         <Filter
           filterField="last"
