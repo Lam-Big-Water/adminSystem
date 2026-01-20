@@ -24,58 +24,55 @@ export const Menus = ({ children }) => {
 export const Toggle = ({
   id,
   children,
+  className,
   positionY = 8,
   positionX = 0,
 }) => {
   const { openId, close, open, setPosition } = useContext(MenuContext);
 
   function handleClick(e) {
+    e.stopPropagation();
     const rect = e.target.closest("button").getBoundingClientRect();
     setPosition({
       x: window.innerWidth - rect.width - rect.x - positionX,
       y: rect.y + rect.height + positionY,
     });
 
-    if (openId === "" || openId !== id) {
-      open(id); // 如果当前无打开项或ID不匹配，则打开新项
-    } else {
-      close(); // 否则关闭当前项
-    }
+    openId === "" || openId !== id ? open(id) : close();
   }
 
   return (
-    <button className="p-1 rounded-sm hover:bg-primary/10" onClick={handleClick}>
+    <button className={className} onClick={handleClick}>
       {children}
     </button>
   );
 };
 
-export const List = ({ id, children }) => {
+export const List = ({ id, children, className }) => {
   const { openId, position, close } = useContext(MenuContext);
-  const ref = useOutsideClick(close, true);
+  const ref = useOutsideClick(close, false);
 
   if (openId !== id) return null;
 
   return createPortal(
     <FocusLock>
-      <div className="fixed z-50" style={{
-            right: position?.x,
-            top: position?.y,
-          }}>
-        <ul
-          className="overflow-hidden font-medium select-none flex flex-col justify-start items-start gap-1 bg-background p-1 border border-border rounded-md"
-          ref={ref}
-          
-        >
+      <div
+        className="fixed z-50"
+        style={{
+          right: position?.x,
+          top: position?.y,
+        }}
+      >
+        <ul className={className} ref={ref}>
           {children}
         </ul>
       </div>
     </FocusLock>,
-    document.querySelector("body")
+    document.querySelector("body"),
   );
 };
 
-export const Button = ({ children, onClick }) => {
+export const Button = ({ children, onClick, className }) => {
   const { close } = useContext(MenuContext);
 
   function handleClick() {
@@ -84,13 +81,8 @@ export const Button = ({ children, onClick }) => {
   }
 
   return (
-    <li className="last:border-b-0 w-full text-foreground text-sm border-b border-border">
-      <button
-        className="cursor-pointer w-full py-2.5 pl-2 pr-6 hover:bg-gray-200 dark:hover:bg-neutral-800/70 rounded-sm"
-        onClick={handleClick}
-      >
-        {children}
-      </button>
-    </li>
+    <button className={className} onClick={handleClick}>
+      {children}
+    </button>
   );
 };
