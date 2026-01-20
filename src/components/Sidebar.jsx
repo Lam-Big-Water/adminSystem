@@ -42,7 +42,7 @@ const Sidebar = () => {
   return (
     <div className="col-start-1 col-end-2 row-span-2">
       <aside className="h-screen flex">
-        <nav className="h-full flex flex-col bg-background text-foreground font-medium p-2">
+        <nav className="h-full flex flex-col bg-background text-foreground font-medium p-2 shadow-sm">
           <div className="p-4 pb-2 flex justify-between items-center">
             <div
               className={`rounded-sm overflow-hidden transition-all ease-linear duration-300 ${

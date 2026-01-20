@@ -1,11 +1,11 @@
 import React from 'react'
-import { BiLoaderAlt } from "react-icons/bi";
+import { LoaderCircle } from 'lucide-react';
 
 
 const SpinnerMini = () => {
   return (
     <>
-        <BiLoaderAlt className='animate-spin w-8 h-8'/>
+        <LoaderCircle size={20} strokeWidth={2} className="animate-spin"/>
     </>
   )
 }
