@@ -9,6 +9,7 @@ import Cabin from '../pages/cabin';
 import Bookings from '../pages/bookings'
 import Settings from '../pages/settings'
 import PageNotFound from '../pages/pageNotFound';
+import NotFount from "@/pages/notFount";
 import Booking from "../pages/booking";
 import Checkin from "../pages/checkin";
 import BookingDetail from "../components/BookingDetail";
@@ -78,6 +79,6 @@ export const routeMap = [
   },
   { 
     path: '*', 
-    element: <PageNotFound /> 
+    element: <NotFount /> 
   },
 ];
