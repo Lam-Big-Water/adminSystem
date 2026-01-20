@@ -1,8 +1,8 @@
 import {
-  ArrowUpDown,
-  ArrowUp,
-  ArrowDown,
-  EllipsisVertical,
+  ChevronsUpDown,
+  ChevronUp,
+  ChevronDown,
+  Ellipsis,
   Eye,
   BadgeCheck,
   Trash,
@@ -11,7 +11,6 @@ import React from "react";
 import { useBookings } from "../query/bookings/useBookings3";
 import { formatCurrency, formatDistanceFromNow } from "../utils/helpers";
 import { format, isToday } from "date-fns";
-import TableSkeleton from "../TableSkeleton";
 import { Modal, ModalOpen, ModalWindow } from "../compose/Modal";
 import { Menus, Toggle, List, Button } from "../compose/Menus";
 import { useDeleteBooking } from "../query/bookings/useDeleteBooking";
@@ -19,10 +18,10 @@ import { useNavigate } from "react-router-dom";
 import { useCheckout } from "../query/bookings/useCheckout";
 import ConfirmDelete from "../ConfirmDelete";
 import Pagination from "../components/Pagination";
+import Spinner from "./Spinner";
 
 const BookingTable = () => {
   const { data, isPending } = useBookings();
-  console.log(data);
   const { bookings, count } = data || {};
   const navigate = useNavigate();
   const { deleteBooking, isDeleting } = useDeleteBooking();
@@ -65,89 +64,89 @@ const BookingTable = () => {
 
   const getSortIcon = (column) => {
     if (sortColumn !== column) {
-      return <ArrowUpDown className="h-4 w-4" />;
+      return <ChevronsUpDown size={14} strokeWidth={2} />;
     }
 
     if (sortDirection === "asc") {
-      return <ArrowUp className="h-4 w-4" />;
+      return <ChevronUp size={14} strokeWidth={2} />;
     }
 
     if (sortDirection === "desc") {
-      return <ArrowDown className="h-4 w-4" />;
+      return <ChevronDown size={14} strokeWidth={2} />;
     }
-    return <ArrowUpDown className="h-4 w-4" />;
+    return <ChevronsUpDown size={14} strokeWidth={2} />;
   };
 
-  if (isPending)
-    return (
-      <div className="min-h-full flex flex-col items-center p-6">
-        <TableSkeleton />
-      </div>
-    );
+  if (isPending) return <Spinner />;
 
   return (
-    <div className="h-screen bg-background pt-4">
+    <div className="bg-background pt-4">
       <div className="mx-auto">
         <div className="rounded-lg border border-border bg-card shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="border-b border-border bg-muted/30">
+              <thead className="border-b border-border hover:bg-muted">
                 <tr>
-                  <th className="px-6 py-4 text-left">
+                  <th className="h-12 text-left">
+                    <div className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm hover:bg-muted"></div>
+                  </th>
+                  <th className="h-12 text-left">
                     <button
                       onClick={() => handleSort("cabinName")}
-                      className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                      className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm hover:bg-muted-foreground/10"
                     >
                       CabinName
                       {getSortIcon("cabinName")}
                     </button>
                   </th>
-                  <th className="px-6 py-4 text-left">
+                  <th className="h-12 text-left">
                     <button
                       onClick={() => handleSort("guestFullName")}
-                      className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                      className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm hover:bg-muted-foreground/10"
                     >
                       GuestFullName
                       {getSortIcon("guestFullName")}
                     </button>
                   </th>
-                  <th className="px-6 py-4 text-left">
+                  <th className="h-12 text-left">
                     <button
                       onClick={() => handleSort("guestEmail")}
-                      className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                      className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm hover:bg-muted-foreground/10"
                     >
                       GuestEmail
                       {getSortIcon("guestEmail")}
                     </button>
                   </th>
-                  <th className="px-6 py-4 text-left">
+                  <th className="h-12 text-left">
                     <button
                       onClick={() => handleSort("startDate")}
-                      className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                      className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm hover:bg-muted-foreground/10"
                     >
                       StartDate
                       {getSortIcon("startDate")}
                     </button>
                   </th>
-                  <th className="px-6 py-4 text-left">
+                  <th className="h-12 text-left">
                     <button
                       onClick={() => handleSort("status")}
-                      className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                      className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm hover:bg-muted-foreground/10"
                     >
                       Status
                       {getSortIcon("status")}
                     </button>
                   </th>
-                  <th className="px-6 py-4 text-left">
+                  <th className="h-12 text-left">
                     <button
                       onClick={() => handleSort("totalPrice")}
-                      className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                      className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm hover:bg-muted-foreground/10"
                     >
                       Amount
                       {getSortIcon("totalPrice")}
                     </button>
                   </th>
-                  <th className="px-6 py-4 text-left">Action</th>
+                  <th className="h-12 text-left px-2">
+                    <span className="h-8 font-medium flex items-center gap-2 px-2 rounded-sm text-sm"></span>
+                  </th>
                 </tr>
               </thead>
 
@@ -155,18 +154,19 @@ const BookingTable = () => {
                 {sortedData.map((item) => (
                   <tr
                     key={item.id}
-                    className="last:border-0 border-b border-border hover:bg-muted/50 transition-colors"
+                    className="last:border-0 border-b border-border text-nowrap hover:bg-muted"
                   >
-                    <td className="px-6 py-4 text-sm font-medium text-foreground">
+                    <td className="p-2 text-sm font-medium text-foreground text-nowrap"></td>
+                    <td className="p-2 text-sm font-medium text-foreground text-nowrap">
                       {item.cabinName}
                     </td>
-                    <td className="px-6 py-4 text-sm text-muted-foreground">
+                    <td className="p-2 text-sm text-muted-foreground text-nowrap">
                       {item.guestFullName}
                     </td>
-                    <td className="px-6 py-4 text-sm text-muted-foreground">
+                    <td className="p-2 text-sm text-muted-foreground text-nowrap">
                       {item.guestEmail}
                     </td>
-                    <td className="h-9 text-nowrap flex flex-col px-6 py-4 text-sm text-foreground">
+                    <td className="h-12 text-nowrap flex flex-col p-2 text-xs text-foreground">
                       <span>
                         {isToday(new Date(item.startDate))
                           ? "Today"
@@ -178,45 +178,55 @@ const BookingTable = () => {
                         &mdash; {format(new Date(item.endDate), "MMM dd yyyy")}
                       </span>
                     </td>
-                    <td className="px-6 py-4 h-9 text-nowrap">
+                    <td className="p-2 h-9 text-nowrap">
                       <span
                         className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
                       >
                         {item.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="p-2">
                       <span
                         className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
                       >
                         {formatCurrency(item.totalPrice)}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="p-2">
                       <Modal>
                         <Menus>
                           <div className="">
-                            <Toggle id={"order"} positionY={10} positionX={10}>
-                              <EllipsisVertical />
+                            <Toggle
+                              className="flex justify-center items-center p-1 rounded-sm hover:bg-muted-foreground/10"
+                              id="order"
+                              positionY={10}
+                              positionX={10}
+                            >
+                              <Ellipsis size={16} strokeWidth={2} />
                             </Toggle>
 
-                            <List id={"order"}>
+                            <List
+                              className="flex flex-col p-1 bg-background text-foreground border border-border shadow-sm rounded-lg"
+                              id="order"
+                            >
                               <Button
+                                className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted "
                                 onClick={() => navigate(`/bookings/${item.id}`)}
                               >
                                 <div className="flex gap-2 items-center">
-                                  <Eye size={18} strokeWidth={1.5} />
+                                  <Eye size={16} strokeWidth={2} />
                                   <span>See details</span>
                                 </div>
                               </Button>
                               {status === "unconfirmed" && (
                                 <Button
+                                  className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted "
                                   onClick={() =>
                                     navigate(`/checkin/${item.id}`)
                                   }
                                 >
                                   <div className="flex gap-2 items-center">
-                                    <BadgeCheck size={18} strokeWidth={1.5} />
+                                    <BadgeCheck size={16} strokeWidth={2} />
                                     <span>Check in</span>
                                   </div>
                                 </Button>
@@ -224,20 +234,21 @@ const BookingTable = () => {
 
                               {status === "checked-in" && (
                                 <Button
+                                  className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted "
                                   onClick={() => checkout(item.id)}
                                   disabled={isCheckingOut}
                                 >
                                   <div className="flex gap-2 items-center">
-                                    <BadgeCheck size={18} strokeWidth={1.5} />
+                                    <BadgeCheck size={16} strokeWidth={2} />
                                     <span>Check out</span>
                                   </div>
                                 </Button>
                               )}
 
                               <ModalOpen opens="delete">
-                                <Button>
+                                <Button className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted ">
                                   <div className="flex gap-2 items-center">
-                                    <Trash size={18} strokeWidth={1.5} />
+                                    <Trash size={16} strokeWidth={2} />
                                     <span>Delete</span>
                                   </div>
                                 </Button>

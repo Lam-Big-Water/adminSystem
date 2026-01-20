@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "../hooks/useDebounce";
-import {X} from "lucide-react"
+import { X } from "lucide-react";
 
 function BookingsTable() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,14 +50,7 @@ function BookingsTable() {
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
       <input
-        className="flex min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs 
-      transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground 
-      file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium 
-      file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none 
-      disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30 
-      focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 
-      aria-invalid:border-destructive aria-invalid:ring-destructive/20 
-      dark:aria-invalid:ring-destructive/40 h-9 w-40 lg:w-[250px]"
+        className="w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4 placeholder:text-muted-foreground placeholder:text-sm max-sm:w-full border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
         type="text"
         placeholder="Name&Email..."
         value={searchInput}
@@ -69,7 +62,7 @@ function BookingsTable() {
           className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer text-muted-foreground"
           onClick={handleClear}
         >
-          <X size={16}/>
+          <X size={16} />
         </button>
       )}
     </div>
@@ -77,7 +70,6 @@ function BookingsTable() {
 }
 
 export default BookingsTable;
-
 
 /*
 `?page=1&Status=all`: 当你使用 URLSearchParams 时，它会自动处理这个格式：
@@ -93,4 +85,4 @@ graph TD
     H --> I[setSearchParams<br/>更新URL]
     I --> J[组件重新渲染]
     J --> K[urlSearch获取新值<br/>但searchInput保持不变]
-*/ 
+*/

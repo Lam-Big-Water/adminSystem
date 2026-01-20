@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import SidebarItem from "./SidebarItem";
-import { Menus, Toggle, MenuList, MenusButton } from "../compose/Menus2";
+import { Menus, Toggle, MenuList, MenusButton } from "../compose/AbsoluteMenus";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useDarkMode } from "../context/DarkModeContext";
 import { useLogout } from "../query/auth/useLogout";

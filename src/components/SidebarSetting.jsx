@@ -7,7 +7,7 @@ import {
   ChevronDown,
   ChevronRight,
 } from "lucide-react";
-import { Menus, Toggle, MenuList, MenusButton } from "../compose/Menus2";
+import { Menus, Toggle, MenuList, MenusButton } from "../compose/AbsoluteMenus";
 
 const SidebarSetting = ({ expanded = true }) => {
   const [settingsOpen, setSettingsOpen] = React.useState(false);

@@ -4,11 +4,7 @@ import SearchBar from "./SearchBar";
 
 const BookingTableOperations = () => {
   return (
-    <div className="flex gap-2 items-center">
-      {/* <input
-        type="text"
-        className="w-full max-w-32 h-8 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-zinc-400 max-sm:w-full"
-      /> */}
+    <div className="flex gap-2 my-4 items-center">
       <SearchBar />
       <Filter
         filterField="Status"

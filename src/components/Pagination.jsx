@@ -70,7 +70,7 @@ const Pagination = ({ count = 45 }) => {
         pageCount - 3,
         pageCount - 2,
         pageCount - 1,
-        pageCount
+        pageCount,
       );
     } else {
       pages.push(
@@ -80,7 +80,7 @@ const Pagination = ({ count = 45 }) => {
         currentPage,
         currentPage + 1,
         "...",
-        pageCount
+        pageCount,
       );
     }
 
@@ -88,7 +88,7 @@ const Pagination = ({ count = 45 }) => {
   };
 
   return (
-    <div className="flex items-center justify-between border-t border-border/50 px-6 py-4">
+    <div className="flex flex-col-reverse gap-4 items-center justify-between border-t border-border/50 px-6 py-4 md:flex-row md:gap-0">
       <div className="text-sm text-muted-foreground">
         Showing{" "}
         <span className="font-medium text-foreground">{startIndex + 1}</span> to{" "}
@@ -105,7 +105,6 @@ const Pagination = ({ count = 45 }) => {
           className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
         >
           <ChevronsLeft className="h-4 w-4" />
-          
         </button>
 
         <button
@@ -114,7 +113,6 @@ const Pagination = ({ count = 45 }) => {
           className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
         >
           <ChevronLeft className="h-4 w-4" />
-          
         </button>
 
         <div className="flex items-center gap-1">
@@ -134,7 +132,7 @@ const Pagination = ({ count = 45 }) => {
               >
                 {page}
               </span>
-            )
+            ),
           )}
         </div>
 
@@ -144,7 +142,6 @@ const Pagination = ({ count = 45 }) => {
           className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
         >
           <ChevronRight className="h-4 w-4" />
-          
         </button>
 
         <button
@@ -153,7 +150,6 @@ const Pagination = ({ count = 45 }) => {
           className="w-8 h-8 p-1 flex justify-center items-center border border-border rounded-md"
         >
           <ChevronsRight className="h-4 w-4" />
-          
         </button>
       </div>
     </div>

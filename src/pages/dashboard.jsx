@@ -38,7 +38,7 @@ const Dashboard = () => {
   const occupationRate = Math.round(occupation * 100) + "%";
 
   return (
-    <div className="max-w-7xl w-full m-auto px-4 py-6">
+    <div className="max-w-7xl w-full mx-auto px-4 py-6">
       <Caption title="Dashboard">
         <button className="flex items-center gap-1 text-sm font-medium text-primary-foreground bg-primary  py-2 px-3 rounded-md hover:bg-primary/90 transition-colors duration-200">
           Download
