@@ -68,7 +68,7 @@ export const List = ({ id, children, className }) => {
         </ul>
       </div>
     </FocusLock>,
-    document.querySelector("body"),
+    document.getElementById('portal'),
   );
 };
 
