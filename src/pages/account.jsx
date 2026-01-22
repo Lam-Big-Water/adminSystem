@@ -1,22 +1,18 @@
 import React from "react";
 
 const Account = () => {
-  // 静态数据 - 作为初始值
   const staticAccountData = {
     name: "Sam Lam",
     newPassword: "",
     confirmPassword: ""
   };
 
-  // 使用 state 来管理表单数据
   const [formData, setFormData] = React.useState(staticAccountData);
   const [isDirty, setIsDirty] = React.useState(false);
 
-  // 处理输入变化
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     
-    // 因为 id 包含连字符，需要特殊处理
     if (id === "new-password") {
       setFormData(prev => ({ ...prev, newPassword: value }));
     } else if (id === "confirm-password") {
@@ -31,21 +27,17 @@ const Account = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // 检查密码是否匹配
     if (formData.newPassword !== formData.confirmPassword) {
       alert("Error: New password and confirm password do not match.");
       return;
     }
     
-    // 显示权限错误提示
     alert("Error: You do not have permission to modify account settings.");
     
-    // 恢复原始数据
     setFormData(staticAccountData);
     setIsDirty(false);
   };
 
-  // 重置表单到原始数据
   const handleReset = () => {
     setFormData(staticAccountData);
     setIsDirty(false);
@@ -53,7 +45,7 @@ const Account = () => {
 
   return (
     <div className="flex-1 flex flex-col gap-4 font-medium text-foreground">
-      <div className="border-b border-border pb-2">
+      <div className="sticky top-0 border-b border-border pb-2 bg-background w-full">
         <h3 className="text-lg">Account</h3>
         <p className="text-sm text-muted-foreground">
           Update your account settings. Set your preferred language and
@@ -61,12 +53,12 @@ const Account = () => {
         </p>
       </div>
 
-      <div className="max-w-2xl">
+      <div className="max-w-2xl overflow-y-auto w-full h-full scroll-smooth pe-4 pb-12 lg:max-w-xl">
         <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 mb-6 px-1">
             <label
               htmlFor="name"
-              className="text-sm leading-none font-medium select-none"
+              className="text-sm leading-none font-medium select-none pb-1"
             >
               Name
             </label>
@@ -75,7 +67,7 @@ const Account = () => {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="SamLam"
-              className="h-9 w-full min-w-0 placeholder:text-zinc-400 rounded-md border border-border px-3 py-1 text-base shadow-xs transition-[color,box-shadow]"
+              className="w-full h-9 min-w-0 px-3 py-1 text-sm shadow-xs border rounded-md col-span-4 placeholder:text-muted-foreground placeholder:text-sm max-sm:w-full border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
               type="text"
             />
             <p className="text-sm text-muted-foreground">
@@ -84,7 +76,7 @@ const Account = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4 mb-6 px-1">
             <label
               htmlFor="new-password"
               className="text-sm leading-none font-medium select-none"
@@ -96,7 +88,7 @@ const Account = () => {
               value={formData.newPassword}
               onChange={handleInputChange}
               placeholder="Enter new password"
-              className="h-9 w-full min-w-0 placeholder:text-zinc-400 rounded-md border border-border px-3 py-1 text-base shadow-xs transition-[color,box-shadow]"
+              className="w-full h-9 min-w-0 px-3 py-1 text-sm shadow-xs border rounded-md col-span-4 placeholder:text-muted-foreground placeholder:text-sm max-sm:w-full border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
               type="password"
             />
             <label
@@ -110,7 +102,7 @@ const Account = () => {
               value={formData.confirmPassword}
               onChange={handleInputChange}
               placeholder="Confirm new password"
-              className="h-9 w-full min-w-0 placeholder:text-zinc-400 rounded-md border border-border px-3 py-1 text-base shadow-xs transition-[color,box-shadow]"
+              className="w-full h-9 min-w-0 px-3 py-1 text-sm shadow-xs border rounded-md col-span-4 placeholder:text-muted-foreground placeholder:text-sm max-sm:w-full border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
               type="password"
             />
             <p className="text-sm text-muted-foreground">
