@@ -36,7 +36,7 @@ const FormField = ({
           defaultValue={defaultValue}
           className={`w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-muted-foreground max-sm:w-full ${
           isError
-            ? "border-destructive focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300"
+            ? "border-destructive focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-500/50"
             : "border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
         }`}
           {...props}
@@ -48,9 +48,9 @@ const FormField = ({
           autoComplete={autoComplete}
           {...register(id, validationRules)}
           defaultValue={defaultValue}
-          className={`w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-muted-foreground max-sm:w-full ${
+          className={`w-full h-9 min-w-0 px-3 py-1 text-base shadow-xs border rounded-md col-span-4  placeholder:text-muted-foreground placeholder:text-sm max-sm:w-full ${
           isError
-            ? "border-destructive focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-300"
+            ? "border-destructive focus:outline-none focus-visible:ring-[3px] focus-visible:ring-red-500/50"
             : "border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
         }`}
           {...props}
