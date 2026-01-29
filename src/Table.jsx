@@ -11,9 +11,7 @@ const Table = () => {
   const [sortColumn, setSortColumn] = React.useState(null);
   const [sortDirection, setSortDirection] = React.useState(null);
 
-
-
-const sortedData = React.useMemo(() => {
+  const sortedData = React.useMemo(() => {
     if (!data || !sortColumn || !sortDirection) return data || [];
 
     return [...data].sort((a, b) => {
@@ -42,14 +40,14 @@ const sortedData = React.useMemo(() => {
         newDirection = null;
       }
     }
-    
+
     setSortColumn(newDirection ? column : null);
     setSortDirection(newDirection);
   };
 
-    const getSortIcon = (column) => {
+  const getSortIcon = (column) => {
     if (sortColumn !== column) {
-        return <ArrowUpDown className="h-4 w-4" />
+      return <ArrowUpDown className="h-4 w-4" />;
     }
 
     if (sortDirection === "asc") {
@@ -60,9 +58,9 @@ const sortedData = React.useMemo(() => {
       return <ArrowDown className="h-4 w-4" />;
     }
     return <ArrowUpDown className="h-4 w-4" />;
-  }
+  };
 
-    if (isPending)
+  if (isPending)
     return (
       <div className="min-h-full flex flex-col items-center p-6">
         <TableSkeleton />
@@ -70,68 +68,60 @@ const sortedData = React.useMemo(() => {
     );
 
   return (
-    <>
-
-
-      <div className="min-h-full mt-6 overflow-x-hidden">
-        <div className="overflow-y-auto w-full rounded-2xl border-[1.4px] border-[var(--color-border)]">
-          <table className="w-full whitespace-nowrap text-left text-sm font-normal text-[var(--text-primary)] border-collapse border-spacing-0">
-            <thead className="border-b border-border bg-muted/30">
-              <tr>
-                <th className="px-6 py-4 text-left">
-                  Image
-                </th>
-                <th className="px-6 py-4 text-left">
-                  <button
-                    onClick={() => handleSort("name")}
-                    className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
-                  >
-                    Name
-                    {getSortIcon("name")}
-                  </button>
-                </th>
-                <th className="px-6 py-4 text-left">
-                  <button
-                    onClick={() => handleSort("maxCapacity")}
-                    className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
-                  >
-                    MaxCapacity
-                    {getSortIcon("maxCapacity")}
-                  </button>
-                </th>
-                <th className="px-6 py-4 text-left">
-                  <button
-                    onClick={() => handleSort("regularPrice")}
-                    className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
-                  >
-                    RegularPrice
-                    {getSortIcon("regularPrice")}
-                  </button>
-                </th>
-                <th className="px-6 py-4 text-left">
-                  <button
-                    onClick={() => handleSort("discount")}
-                    className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
-                  >
-                    discount
-                    {getSortIcon("discount")}
-                  </button>
-                </th>
-                <th className="px-6 py-4 text-left">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedData.map((cabin, i) => (
-                <Row i={i} key={cabin.id} cabin={cabin} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <Pagination count={count} />
+    <div className="bg-background">
+      <div className="overflow-y-auto w-full rounded-lg border border-border shadow-sm">
+        <table className="w-full">
+          <thead className="border-b border-border bg-muted">
+            <tr>
+              <th className="px-6 py-4 text-left">Image</th>
+              <th className="px-6 py-4 text-left">
+                <button
+                  onClick={() => handleSort("name")}
+                  className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                >
+                  Name
+                  {getSortIcon("name")}
+                </button>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <button
+                  onClick={() => handleSort("maxCapacity")}
+                  className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                >
+                  MaxCapacity
+                  {getSortIcon("maxCapacity")}
+                </button>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <button
+                  onClick={() => handleSort("regularPrice")}
+                  className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                >
+                  RegularPrice
+                  {getSortIcon("regularPrice")}
+                </button>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <button
+                  onClick={() => handleSort("discount")}
+                  className="flex items-center h-auto p-0 font-semibold text-sm hover:bg-transparent hover:text-foreground gap-2 cursor-pointer"
+                >
+                  discount
+                  {getSortIcon("discount")}
+                </button>
+              </th>
+              <th className="px-6 py-4 text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedData.map((cabin, i) => (
+              <Row i={i} key={cabin.id} cabin={cabin} />
+            ))}
+          </tbody>
+        </table>
       </div>
-    </>
+      <Pagination count={count} />
+    </div>
   );
 };
 

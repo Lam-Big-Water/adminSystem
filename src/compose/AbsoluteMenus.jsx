@@ -1,6 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { useOutsideClick } from "../hooks/useOutsideClick";
+import FocusLock from "react-focus-lock";
 
 const MenuContext = React.createContext(null);
 
@@ -50,18 +51,21 @@ export const MenuList = ({
   if (openId !== id) return null;
 
   return createPortal(
-    <div
-      style={{
-        bottom: `${positionY}px`,
-        left: `${positionX}px`,
-      }}
-      className="fixed z-50"
-    >
-      <ul className={className} ref={ref}>
-        {children}
-      </ul>
-    </div>,
-    document.body,
+    <FocusLock>
+      <div
+        style={{
+          bottom: `${positionY}px`,
+          left: `${positionX}px`,
+        }}
+        className="fixed z-50"
+      >
+        <ul className={className} ref={ref}>
+          {children}
+        </ul>
+      </div>
+    </FocusLock>,
+
+    document.getElementById("portal"),
   );
 };
 

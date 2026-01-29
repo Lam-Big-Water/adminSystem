@@ -151,54 +151,54 @@ const BookingTable = () => {
               </thead>
 
               <tbody>
-                {sortedData.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="last:border-0 border-b border-border text-nowrap hover:bg-muted"
-                  >
-                    <td className="p-2 text-sm font-medium text-foreground text-nowrap"></td>
-                    <td className="p-2 text-sm font-medium text-foreground text-nowrap">
-                      {item.cabinName}
-                    </td>
-                    <td className="p-2 text-sm text-muted-foreground text-nowrap">
-                      {item.guestFullName}
-                    </td>
-                    <td className="p-2 text-sm text-muted-foreground text-nowrap">
-                      {item.guestEmail}
-                    </td>
-                    <td className="h-12 text-nowrap flex flex-col p-2 text-xs text-foreground">
-                      <span>
-                        {isToday(new Date(item.startDate))
-                          ? "Today"
-                          : formatDistanceFromNow(item.startDate)}{" "}
-                        &rarr; {item.numNights} night stay
-                      </span>
-                      <span>
-                        {format(new Date(item.startDate), "MMM dd yyyy")}{" "}
-                        &mdash; {format(new Date(item.endDate), "MMM dd yyyy")}
-                      </span>
-                    </td>
-                    <td className="p-2 h-9 text-nowrap">
-                      <span
-                        className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
-                      >
-                        {item.status}
-                      </span>
-                    </td>
-                    <td className="p-2">
-                      <span
-                        className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
-                      >
-                        {formatCurrency(item.totalPrice)}
-                      </span>
-                    </td>
-                    <td className="p-2">
-                      <Modal>
-                        <Menus>
-                          <div className="">
+                <Menus>
+                  {sortedData.map((item) => (
+                    <tr
+                      key={item.id}
+                      className="last:border-0 border-b border-border text-nowrap hover:bg-muted"
+                    >
+                      <td className="p-2 text-sm font-medium text-foreground text-nowrap"></td>
+                      <td className="p-2 text-sm font-medium text-foreground text-nowrap">
+                        {item.cabinName}
+                      </td>
+                      <td className="p-2 text-sm text-muted-foreground text-nowrap">
+                        {item.guestFullName}
+                      </td>
+                      <td className="p-2 text-sm text-muted-foreground text-nowrap">
+                        {item.guestEmail}
+                      </td>
+                      <td className="h-12 text-nowrap flex flex-col p-2 text-xs text-foreground">
+                        <span>
+                          {isToday(new Date(item.startDate))
+                            ? "Today"
+                            : formatDistanceFromNow(item.startDate)}{" "}
+                          &rarr; {item.numNights} night stay
+                        </span>
+                        <span>
+                          {format(new Date(item.startDate), "MMM dd yyyy")}{" "}
+                          &mdash;{" "}
+                          {format(new Date(item.endDate), "MMM dd yyyy")}
+                        </span>
+                      </td>
+                      <td className="p-2 h-9 text-nowrap">
+                        <span
+                          className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
+                        >
+                          {item.status}
+                        </span>
+                      </td>
+                      <td className="p-2">
+                        <span
+                          className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium capitalize`}
+                        >
+                          {formatCurrency(item.totalPrice)}
+                        </span>
+                      </td>
+                      <td className="p-2">
+                        <Modal>
                             <Toggle
                               className="flex justify-center items-center p-1 rounded-sm hover:bg-muted-foreground/10"
-                              id="order"
+                              id={item.id}
                               positionY={10}
                               positionX={10}
                             >
@@ -207,7 +207,7 @@ const BookingTable = () => {
 
                             <List
                               className="flex flex-col p-1 bg-background text-foreground border border-border shadow-sm rounded-lg"
-                              id="order"
+                              id={item.id}
                             >
                               <Button
                                 className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted "
@@ -261,12 +261,11 @@ const BookingTable = () => {
                                 disabled={isDeleting}
                               />
                             </ModalWindow>
-                          </div>
-                        </Menus>
-                      </Modal>
-                    </td>
-                  </tr>
-                ))}
+                        </Modal>
+                      </td>
+                    </tr>
+                  ))}
+                </Menus>
               </tbody>
             </table>
           </div>
