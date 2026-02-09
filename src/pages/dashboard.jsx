@@ -10,6 +10,7 @@ import Card from "@/components/Card";
 import { BellRing, CreditCard, UsersRound, ChartBarBig } from "lucide-react";
 import SimpleBarChart from "@components/SimpleBarChart";
 import Caption from "@/components/Caption";
+import {Button} from "../components/ui/Button"
 
 const Dashboard = () => {
   const { bookings, isPending: isPending1 } = useRecentBookings();
@@ -40,9 +41,9 @@ const Dashboard = () => {
   return (
     <div className="max-w-7xl w-full mx-auto px-4 py-6">
       <Caption title="Dashboard">
-        <button className="flex items-center gap-1 text-sm font-medium text-primary-foreground bg-primary  py-2 px-3 rounded-md hover:bg-primary/90 transition-colors duration-200">
+        <Button size="md" variant="primary">
           Download
-        </button>
+        </Button>
       </Caption>
       <div className="flex justify-between">
         <Filter

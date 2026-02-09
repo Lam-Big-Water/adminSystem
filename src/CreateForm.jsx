@@ -5,9 +5,10 @@ import { useEdit } from "./query/cabins/useEdit";
 
 import FormField from "./FormField";
 import ImageUploadField from "./ImageUploadField";
-import Button from "./Button";
+// import Button from "./Button";
 
 import FocusLock from "react-focus-lock";
+import { Button } from "./components/ui/Button";
 
 import { X } from "lucide-react";
 
@@ -169,26 +170,23 @@ const CreateForm = ({ cabinToEdit = {}, onCloseModal }) => {
             />
 
             <div className="flex justify-end gap-4">
-              <button
+               <Button
+                size="md"
+                variant="secondary"
                 onClick={() => onCloseModal?.()}
-                type="reset"
-                className="text-sm cursor-pointer text-slate-950 dark:text-slate-200
- bg-stone-50 dark:bg-stone-950 
- border border-stone-200 dark:border-stone-900
- rounded-md py-2 px-4 transition-colors duration-200"
+                type="button"
               >
                 Cancel
-              </button>
+              </Button>
 
-              <button
+              <Button
+                size="md"
+                variant="primary"
                 disabled={isWorking}
-                className="text-sm cursor-pointer dark:text-slate-950 text-slate-200
- dark:bg-stone-50 bg-stone-950 
- border border-stone-200 dark:border-stone-900
- rounded-md py-2 px-4 transition-colors duration-200"
+                
               >
                 {isEditSession ? "Edit" : "Create"}
-              </button>
+              </Button>
 
             </div>
           </div>

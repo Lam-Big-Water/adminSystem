@@ -5,6 +5,7 @@ import { LogIn, GamepadDirectional } from "lucide-react";
 import FormField from "@/FormField";
 import FormFieldPassword from "@components/FormFieldPassword";
 import { useForm } from "react-hook-form";
+import { Button } from "./ui/Button";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("samlam@showcase.com");
@@ -80,7 +81,17 @@ const LoginForm = () => {
           }}
         />
 
-        <button
+        <Button variant="primary" size="lg">
+          {isPending ? (
+            <SpinnerMini />
+          ) : (
+            <span className="flex items-center gap-2">
+              <LogIn /> Login
+            </span>
+          )}
+        </Button>
+
+        {/* <button
           type="submit"
           className="h-9 px-4 py-2 bg-primary text-primary-foreground inline-flex items-center justify-center whitespace-normal rounded-md text-sm transition-color duration-100 cursor-pointer disabled:pointer-events-none hover:bg-primary/90 border-border focus:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
         >
@@ -91,7 +102,7 @@ const LoginForm = () => {
               <LogIn /> Login
             </span>
           )}
-        </button>
+        </button> */}
       </form>
     </div>
   );
