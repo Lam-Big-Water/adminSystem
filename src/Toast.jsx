@@ -2,6 +2,7 @@ import React from "react";
 import { BadgeCheck, BadgeX } from 'lucide-react';
 import { ToastContext } from "./context/Toast/ToastProvider";
 import { format } from "date-fns";
+import { Button } from "./components/ui/Button";
 
 
 const ICONS_BY_VARIANT = {
@@ -49,12 +50,13 @@ const Toast = ({ id, variant, children }) => {
         </h2>
         <small>{formatDateTime(new Date())}</small>
       </div>
-      <button
-        className="px-2 py-1.5 rounded-sm text-xs font-normal bg-primary text-primary-foreground"
+      <Button
+        size="sm"
+        variant="primary"
         onClick={() => dismissToast(id)}
       >
         Undo
-      </button>
+      </Button>
     </div>
   );
 };

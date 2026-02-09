@@ -1,8 +1,12 @@
+import React from "react";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateBooking } from "../../server/apiBookings";
+import { ToastContext } from "../../context/Toast/ToastProvider";
 
 export function useCheckout() {
   const queryClient = useQueryClient();
+  const { createToast } = React.useContext(ToastContext);
 
   const { mutate: checkout, isPending: isCheckingOut } = useMutation({
     mutationFn: (bookingId) =>
@@ -11,11 +15,12 @@ export function useCheckout() {
       }),
 
     onSuccess: (data) => {
-      console.log(`Booking #${data.id} successfully checked out`);
+      createToast(`Booking ID:${data.id} successfully checked out`, "success");
+
       queryClient.invalidateQueries({ active: true });
     },
 
-    onError: () => console.error("There was an error while checking out"),
+    onError: (err) => createToast(err.message, "error"),
   });
 
   return { checkout, isCheckingOut };

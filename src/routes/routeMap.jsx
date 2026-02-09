@@ -43,7 +43,7 @@ export const routeMap = [
       },
       {
         path: "bookings/:bookingId",
-        element: <BookingDetail/>
+        element: <Booking/>
       },
       {
         path: "checkin/:bookingId",
