@@ -218,7 +218,7 @@ const BookingTable = () => {
                                   <span>See details</span>
                                 </div>
                               </Button>
-                              {status === "unconfirmed" && (
+                              {item.status === "unconfirmed" && (
                                 <Button
                                   className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted "
                                   onClick={() =>
@@ -232,7 +232,7 @@ const BookingTable = () => {
                                 </Button>
                               )}
 
-                              {status === "checked-in" && (
+                              {item.status === "checked-in" && (
                                 <Button
                                   className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted "
                                   onClick={() => checkout(item.id)}
@@ -244,7 +244,6 @@ const BookingTable = () => {
                                   </div>
                                 </Button>
                               )}
-
                               <ModalOpen opens="delete">
                                 <Button className="flex py-1.5 ps-2 pe-8 text-sm text-left rounded-md hover:bg-muted ">
                                   <div className="flex gap-2 items-center">
@@ -256,7 +255,7 @@ const BookingTable = () => {
                             </List>
                             <ModalWindow name="delete">
                               <ConfirmDelete
-                                resourceName="booking"
+                                resourceName={item.id}
                                 onConfirm={() => deleteBooking(item.id)}
                                 disabled={isDeleting}
                               />

@@ -1,6 +1,10 @@
 import FocusLock from "react-focus-lock";
 const ConfirmDelete = ({ resourceName, onConfirm, disabled, onCloseModal }) => {
 
+  function deleteBooking () {
+    onConfirm();
+    onCloseModal();
+  }
   return (
     <div
       className="w-md h-auto font-semibold bg-stone-50 dark:bg-stone-950 absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 p-6 border border-zinc-400 rounded-xl"
@@ -25,7 +29,7 @@ const ConfirmDelete = ({ resourceName, onConfirm, disabled, onCloseModal }) => {
             </button>
             <button
               disabled={disabled}
-              onClick={onConfirm}
+              onClick={deleteBooking}
               className="text-sm text-stone-50 bg-red-600 cursor-pointer hover:bg-red-500 border border-stone-200 dark:border-stone-900
  rounded-md py-2 px-4 transition-colors duration-200"
             >
